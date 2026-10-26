@@ -1,0 +1,1595 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abarrotera Sánchez · Mayoreo para tu tiendita</title>
+<link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+<style>
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:800;src:url('fonts/barlowc-800.ttf') format('truetype')}
+@font-face{font-family:'Barlow Condensed';font-style:normal;font-weight:900;src:url('fonts/barlowc-900.ttf') format('truetype')}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:110px}
+body{margin:0;background:linear-gradient(165deg,#0C92FC 0%,#0462EE 26%,#0442CF 52%,#03176F 80%,#021155 100%) fixed;color:#fff;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;letter-spacing:-0.05em;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+button,select{font-family:inherit}
+.sec{padding:96px clamp(16px,3.2vw,55px);position:relative}
+.head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:24px;margin-bottom:44px}
+.head-l{flex:1.618 1 420px;display:flex;flex-direction:column;gap:14px}
+.kicker{display:inline-flex;align-items:center;gap:10px;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:#fff}
+.kicker::before{content:"";width:10px;height:10px;background:#DF212F;border-radius:3px}
+.display{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:0;margin:0;color:#fff}
+.h2{font-size:clamp(48px,6.2vw,100px)}
+.lead{font-size:17px;line-height:1.6;color:rgba(255,255,255,.86);margin:0;max-width:44ch}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 26px;border-radius:999px;font-weight:700;font-size:16px;text-decoration:none;border:2px solid transparent;transition:transform .2s,background .2s,color .2s;cursor:pointer}
+.btn:hover{transform:translateY(-2px)}
+.btn-w{background:#fff;color:#021155}
+.btn-o{background:transparent;color:#fff;border-color:#fff}
+.btn-r{background:#DF212F;color:#fff}
+.btn-g{background:#1F9D55;color:#fff}
+.btn-b{background:#0442CF;color:#fff}
+.btn-sm{min-height:44px;font-size:14px;padding:0 16px}
+.card{background:#fff;color:#021155;border-radius:26px}
+.lift{transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s}
+.lift:hover{transform:translateY(-4px);box-shadow:0 22px 40px rgba(2,17,85,.3)}
+.label{font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;text-transform:uppercase;letter-spacing:.1em;font-size:12px}
+.note{letter-spacing:0;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-style:italic;font-weight:700;font-size:28px;color:#fff;line-height:1}
+.gray{background:#D9D9D9;border:2px dashed #9A9A9A;color:#4D4D4D;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;text-align:center;padding:20px;border-radius:22px}
+.gray b{font-size:15px}
+.gray span{font-size:12px}
+
+/* Ticker y menú */
+.ticker{background:#021155;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:600}
+.ticker-track{display:inline-flex;gap:34px;padding:11px 0;width:max-content;animation:ticker 40s linear infinite}
+.dot{width:6px;height:6px;border-radius:50%;background:#DF212F;display:inline-block}
+.nav-wrap{position:sticky;top:0;z-index:40;padding:8px clamp(10px,3.2vw,55px)}
+.nav{background:#fff;color:#021155;border-radius:26px;padding:7px 7px 7px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px;box-shadow:0 10px 30px rgba(2,17,85,.35)}
+.nav-links{display:flex;align-items:center;gap:clamp(14px,2vw,30px);font-size:15px;font-weight:700}
+.nav-links a{text-decoration:none;color:#021155}
+.nav-links a:hover{color:#0442CF}
+.menu-btn{display:none;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;border:none;background:#0442CF;color:#fff;cursor:pointer}
+.mobile-menu{margin-top:8px;background:#fff;color:#021155;border-radius:22px;padding:8px;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(2,17,85,.35)}
+.mobile-menu a{padding:13px 16px;font-weight:700;text-decoration:none;border-radius:14px}
+@media (max-width:1080px){.nav-links{display:none}.menu-btn{display:inline-flex}}
+@media (max-width:640px){.hide-sm{display:none}}
+
+/* Hero */
+.hero{background:linear-gradient(165deg,#0C92FC 0%,#0462EE 30%,#0442CF 62%,#021155 100%);min-height:calc(100vh - 44px);min-height:calc(100svh - 44px);display:flex;flex-direction:column;justify-content:center;padding:110px clamp(16px,3.2vw,55px) 170px;position:relative;overflow:hidden}
+.pill{display:inline-flex;align-items:center;gap:8px;border:1.5px solid #fff;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:700;letter-spacing:.04em;align-self:flex-start}
+.hero h1{font-size:clamp(40px,4.6vw,80px);line-height:.88}
+.mark{background:none;padding:0}
+.hero-cols{display:flex;flex-wrap:wrap;gap:34px;align-items:center}
+.hero-copy{flex:7 1 560px;min-width:0;display:flex;flex-wrap:wrap;gap:34px;align-items:center}
+.hero-txt{flex:1.618 1 340px;min-width:0;display:flex;flex-direction:column;gap:22px}
+.hero-photo{flex:1 1 260px;min-width:0;position:relative;align-self:center}
+.photo{position:relative;border-radius:34px;overflow:hidden;aspect-ratio:1/1.618;max-height:640px;border:6px solid #fff;box-shadow:0 34px 68px rgba(2,17,85,.45)}
+.photo img{width:100%;height:100%;object-fit:cover;display:block}
+.badge{position:absolute;padding:13px 16px;border-radius:16px;font-weight:700;font-size:16px;box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.hero-cta{display:flex;flex-wrap:wrap;gap:13px}
+.avatars{display:flex;align-items:center;gap:13px;font-size:15px}
+.avatars img{width:40px;height:40px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-left:-13px}
+.avatars img:first-child{margin-left:0}
+.expo{flex:3 1 300px;min-width:0;align-self:center;background:#fff;color:#021155;border-radius:34px;padding:16px;display:flex;flex-direction:column;gap:14px;box-shadow:0 34px 68px rgba(2,17,85,.45);position:relative}
+.expo-tag{position:absolute;top:-13px;right:22px;z-index:2;display:inline-flex;align-items:center;gap:8px;background:#DF212F;color:#fff;border-radius:999px;padding:7px 14px}
+.live{width:8px;height:8px;border-radius:50%;background:#fff;animation:pulse 1.6s ease-in-out infinite}
+.cd{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.cd div{background:#021155;color:#fff;border-radius:14px;padding:10px 4px;text-align:center}
+.cd b{letter-spacing:0;display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:34px;line-height:1}
+.cd span{font-size:12px;font-weight:600}
+
+/* Beneficios */
+.benef{margin-top:-86px;position:relative;z-index:3;padding:0 clamp(16px,3.2vw,55px)}
+.benef-in{border-radius:30px;padding:22px;display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:10px;box-shadow:0 20px 50px rgba(2,17,85,.35)}
+.benef-it{display:flex;align-items:center;gap:14px;padding:10px}
+.benef-ic{flex:none;width:54px;height:54px;border-radius:50%;background:#E6F0FF;display:flex;align-items:center;justify-content:center}
+.benef-it b{font-size:16px;line-height:1.3}
+
+/* Productos */
+.sec-prod{background:linear-gradient(180deg,#0442CF 0%,#03176F 100%)}
+.loop-wrap{display:flex;flex-direction:column;gap:22px;overflow:hidden}
+.loop-l,.loop-r{display:flex;gap:22px;width:max-content;padding-left:22px}
+.loop-l{animation:loopL 55s linear infinite}
+.loop-r{animation:loopR 55s linear infinite}
+.pcard{flex:none;width:clamp(200px,17vw,260px);background:#fff;color:#021155;border-radius:26px;padding:14px;display:flex;flex-direction:column;gap:12px}
+.pcard .gray{aspect-ratio:1/1;padding:14px}
+.pcard-t{display:flex;flex-direction:column;gap:6px;padding:0 6px 6px}
+.cat{align-self:flex-start;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:11px;letter-spacing:.1em;color:#0442CF;background:#E6F0FF;padding:4px 10px;border-radius:999px}
+
+/* Cómo comprar */
+.sec-how{background:linear-gradient(180deg,#03176F 0%,#0442CF 100%)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px}
+.step{background:#fff;color:#021155;border-radius:26px;padding:14px;display:flex;flex-direction:column;gap:20px}
+.step img{width:100%;aspect-ratio:1.618/1;object-fit:cover;border-radius:20px;display:block}
+.step .gray{aspect-ratio:1.618/1}
+.step-t{display:flex;gap:14px;align-items:flex-start;padding:0 8px 12px}
+.num{letter-spacing:0;flex:none;width:46px;height:46px;border-radius:50%;background:#DF212F;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:22px}
+.step-t b{font-size:21px;display:block;margin-bottom:4px}
+.step-t span{font-size:16px;line-height:1.5;color:#34446E}
+
+/* Sucursales */
+.sec-suc{background:linear-gradient(180deg,#0442CF 0%,#021155 100%)}
+.filters{display:flex;flex-wrap:wrap;gap:8px;justify-content:flex-start;align-content:flex-start}
+.filt{min-height:46px;padding:0 18px;border-radius:999px;border:2px solid #fff;background:transparent;color:#fff;font-weight:700;font-size:15px;cursor:pointer;transition:background .25s,color .25s,transform .15s}
+.filt:hover{transform:translateY(-2px)}
+.filt.on{background:#fff;color:#021155}
+.suc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,290px),1fr));gap:22px}
+.suc{background:#fff;color:#021155;border-radius:26px;overflow:hidden;display:flex;flex-direction:column}
+.suc-img{position:relative}
+.suc-img img{width:100%;aspect-ratio:1.618/1;object-fit:cover;display:block}
+.tagst{position:absolute;top:14px;left:14px;background:#0442CF;color:#fff;font-size:12px;font-weight:800;padding:6px 12px;border-radius:999px;letter-spacing:.04em}
+.suc-b{padding:22px;display:flex;flex-direction:column;gap:8px;flex:1}
+.suc-b b{font-size:22px}
+.suc-b p{margin:0;font-size:15px;line-height:1.5;color:#34446E}
+.suc-tel{font-size:16px;font-weight:700;color:#0442CF;text-decoration:none}
+.suc-btns{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin-top:auto;padding-top:14px}
+.suc-btns .btn{min-height:46px;font-size:14px;padding:0 10px}
+.suc-btns .wide{grid-column:1/-1}
+
+/* Testimonios */
+.sec-test{background:linear-gradient(180deg,#021155 0%,#0442CF 100%)}
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,290px),1fr));gap:22px}
+.tcard{background:#fff;color:#021155;border-radius:26px;padding:16px;display:flex;flex-direction:column;gap:16px}
+.tcard .gray{aspect-ratio:1.618/1}
+.tcard blockquote{margin:0;font-size:17px;line-height:1.6;color:#34446E}
+.tcard figcaption{font-size:14px;font-weight:700;color:#0442CF}
+
+/* Preguntas */
+.sec-faq{background:#03176F}
+.faq{display:flex;flex-wrap:wrap;gap:34px;align-items:flex-start}
+.faq-l{flex:1 1 300px;position:sticky;top:120px;display:flex;flex-direction:column;gap:16px}
+.faq-r{flex:1.618 1 440px;min-width:0;display:flex;flex-direction:column;gap:10px}
+.qa{background:#fff;color:#021155;border-radius:22px;overflow:hidden}
+.qa button{width:100%;min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:16px 22px;border:none;background:transparent;color:#021155;font-size:18px;font-weight:700;text-align:left;cursor:pointer}
+.qa-ic{flex:none;width:34px;height:34px;border-radius:50%;background:#0442CF;color:#fff;display:flex;align-items:center;justify-content:center;font-size:21px;font-weight:700;line-height:1}
+.qa p{margin:0;padding:0 22px 22px;font-size:17px;line-height:1.6;color:#34446E}
+
+/* Cierre */
+.sec-close{background:radial-gradient(120% 90% at 20% 0%,#2B70E3 0%,#0442CF 48%,#021155 100%);overflow:hidden}
+.close{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:56px}
+.ganas{margin:0;flex:1.618 1 360px;min-width:0;max-width:560px;line-height:0}
+.ganas svg{display:block;width:100%;height:auto;overflow:visible}
+.close-r{flex:1 1 320px;max-width:520px;display:flex;flex-direction:column;gap:22px}
+.close-r p{margin:0;font-size:clamp(17px,1.4vw,21px);line-height:1.6;color:#fff}
+
+/* Footer y pie */
+.foot{background:#021155;padding:60px clamp(16px,3.2vw,55px) 40px;border-top:1px solid rgba(255,255,255,.14)}
+.foot-in{display:flex;flex-direction:column;gap:36px}
+.foot-top{display:flex;flex-wrap:wrap;gap:36px;justify-content:space-between}
+.foot-l{flex:1 1 280px;max-width:380px;display:flex;flex-direction:column;gap:14px}
+.foot-l img{height:52px;width:auto;display:block;align-self:flex-start}
+.foot-l p{margin:0;font-size:15px;line-height:1.6;color:rgba(255,255,255,.8)}
+.foot-l a{text-decoration:none}
+.foot-r{flex:1.618 1 480px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:22px}
+.foot-r b{display:block;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;color:#fff;font-size:13px;letter-spacing:.12em;margin-bottom:8px}
+.foot-r span{display:block;font-size:14px;line-height:1.8;color:rgba(255,255,255,.78)}
+.foot-bot{border-top:1px solid rgba(255,255,255,.18);padding-top:20px;display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:14px;font-size:13px;color:rgba(255,255,255,.7)}
+.socials{display:flex;gap:8px;flex-wrap:wrap}
+.socials a{display:inline-flex;align-items:center;min-height:42px;padding:0 16px;border-radius:999px;border:1.5px solid rgba(255,255,255,.4);color:#fff;font-weight:700;font-size:14px;text-decoration:none}
+.made{background:#021155;border-top:1px solid rgba(255,255,255,.14);padding:40px clamp(16px,3.2vw,55px) 56px;text-align:center}
+.made p{margin:0 0 16px;color:rgba(255,255,255,.7);font-size:13px;text-transform:uppercase;letter-spacing:.14em}
+.made a{display:inline-block}
+.made-logo{height:34px;width:auto;display:block;margin:0 auto}
+
+/* Aviso de pedido */
+.toast{position:fixed;right:16px;bottom:16px;z-index:50;max-width:min(380px,calc(100% - 32px));background:#fff;color:#021155;border-radius:21px;padding:13px 13px 13px 16px;display:flex;gap:13px;align-items:flex-start;box-shadow:0 18px 40px rgba(2,17,85,.4);animation:toastIn .45s cubic-bezier(.2,.8,.2,1)}
+.toast img{flex:none;width:52px;height:52px;border-radius:13px;object-fit:cover}
+.toast-b{display:flex;flex-direction:column;gap:4px;min-width:0}
+.ej{align-self:flex-start;background:#E6E6E6;color:#444;font-size:11px;font-weight:800;letter-spacing:.06em;padding:3px 8px;border-radius:999px}
+.toast-x{flex:none;width:32px;height:32px;border-radius:50%;border:none;background:#F0F2F8;color:#021155;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+.toast-x:hover{background:#DF212F;color:#fff}
+
+/* Cursor: luz suave solo alrededor del puntero o del dedo */
+.spot{position:fixed;left:0;top:0;width:100%;height:100%;pointer-events:none;z-index:0;opacity:0;transition:opacity .6s ease;mix-blend-mode:screen;background:radial-gradient(circle 230px at var(--sx,50%) var(--sy,50%),rgba(12,146,252,.38) 0%,rgba(12,146,252,.14) 42%,rgba(12,146,252,0) 72%)}
+
+/* Entradas suaves */
+.rv{transition:opacity .75s ease,transform .75s cubic-bezier(.2,.8,.2,1)}
+.rv-pre{opacity:0;transform:translateY(24px)}
+.rv-in{opacity:1;transform:none}
+
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes loopL{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes loopR{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+@keyframes toastIn{from{transform:translateY(24px);opacity:0}to{transform:translateY(0);opacity:1}}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+@media (prefers-reduced-motion: reduce){
+  .ticker-track,.loop-l,.loop-r,.toast,.live{animation:none}
+  .rv,.lift,.btn,.filt{transition:none}
+  .rv-pre{opacity:1;transform:none}
+  .spot{display:none}
+}
+
+/* Fondo: capa fija; secciones transparentes para que la luz del cursor quede detras del contenido */
+.hero,.sec-prod,.sec-how,.sec-suc,.sec-test,.sec-faq,.sec-close,.foot{background:none}
+.ticker{background:#021155}
+.tl{position:relative;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.tl-track{position:absolute;top:23px;left:8%;right:8%;height:4px;background:rgba(255,255,255,.25);border-radius:4px;overflow:hidden}
+.tl-fill{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left center;transition:transform 2.3s cubic-bezier(.4,.1,.3,1)}
+.tl.in .tl-fill{transform:scaleX(1)}
+.tl-item{position:relative;display:flex;flex-direction:column;gap:18px;opacity:0;transform:translateY(46px) scale(.95);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.9,.25,1.15)}
+.tl.in .tl-item{opacity:1;transform:none}
+.tl-node{position:relative}
+.tl-node:after{content:"";position:absolute;inset:-6px;border-radius:50%;border:3px solid #fff;opacity:0}
+.tl.in .tl-item .tl-node:after{animation:ping 1s .2s ease-out both}
+.tl.in .tl-item:nth-child(3) .tl-node:after{animation-delay:.9s}
+.tl.in .tl-item:nth-child(4) .tl-node:after{animation-delay:1.6s}
+@keyframes ping{0%{opacity:.9;transform:scale(1)}100%{opacity:0;transform:scale(1.9)}}
+.tl.in .tl-item:nth-child(2){transition-delay:.2s}
+.tl.in .tl-item:nth-child(3){transition-delay:.9s}
+.tl.in .tl-item:nth-child(4){transition-delay:1.6s}
+.tl-node{width:48px;height:48px;border-radius:50%;background:#DF212F;color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:900;font-size:22px;box-shadow:0 0 0 6px rgba(255,255,255,.2);letter-spacing:0}
+.tl.in .tl-item:nth-child(2) .tl-node{animation:nodePop .5s .2s both}
+.tl.in .tl-item:nth-child(3) .tl-node{animation:nodePop .5s .9s both}
+.tl.in .tl-item:nth-child(4) .tl-node{animation:nodePop .5s 1.6s both}
+.tl-end{grid-column:1/-1;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;margin-top:10px;opacity:0;transform:translateY(14px);transition:opacity .6s ease 2.5s,transform .6s cubic-bezier(.2,.8,.2,1) 2.5s}
+.tl.in .tl-end{opacity:1;transform:none}
+.tl-ok{position:relative;width:56px;height:56px;border-radius:50%;background:#fff;color:#DF212F;display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 7px rgba(255,255,255,.2)}
+.tl.in .tl-ok{animation:nodePop .6s 2.5s both}
+.tl-end b{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(30px,3.4vw,44px);line-height:1;letter-spacing:0;color:#fff}
+.tl-end>span{font-size:16px;color:#E6F0FF}
+.cf{position:absolute;left:50%;top:50%;width:8px;height:8px;margin:-4px;border-radius:2px;background:var(--c);opacity:0;pointer-events:none}
+.tl.in .cf{animation:cfly 1.2s 2.55s cubic-bezier(.15,.7,.3,1) both}
+@keyframes cfly{0%{opacity:1;transform:translate(0,0) rotate(0) scale(1)}80%{opacity:1}100%{opacity:0;transform:translate(var(--x),var(--y)) rotate(var(--r)) scale(.6)}}
+@media (max-width:600px){
+  .suc-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .suc{border-radius:18px}
+  .suc-img img{aspect-ratio:4/3}
+  .tagst{top:8px;left:8px;font-size:10px;padding:4px 8px}
+  .suc-b{padding:12px;gap:6px}
+  .suc-b b{font-size:16px;line-height:1.15}
+  .suc-b p{font-size:12px;line-height:1.35}
+  .suc-btns{grid-template-columns:1fr;gap:6px;padding-top:8px}
+  .suc-btns .wide{grid-column:auto}
+  .suc-btns .btn{min-height:42px;font-size:14px;padding:0 8px;gap:6px;white-space:nowrap;line-height:1}
+  .wa-x{display:none}
+  .suc-btns .btn svg{width:16px;height:16px}
+}
+.hero::before{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:url('img/portada.webp') 78% center / cover no-repeat;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 76%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 76%,transparent 100%)}
+@media (max-width:760px){.hero{padding-top:318px}.hero::before{inset:0 0 auto 0;height:430px;background-position:right top;background-size:auto 100%;opacity:1;-webkit-mask-image:linear-gradient(180deg,#000 0,#000 62%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 62%,transparent 100%)}}
+@media (max-width:900px){.faq-l{position:static}}
+@keyframes nodePop{0%{transform:scale(.3)}60%{transform:scale(1.15)}100%{transform:scale(1)}}
+.tl .step{background:#fff;color:#021155;border-radius:26px;padding:14px;display:flex;flex-direction:column;gap:16px;flex:1}
+.tl .step .step-t{padding:0 8px 12px}
+.tl .step .step-t b{font-size:21px;display:block;margin-bottom:4px}
+.tl .step .step-t span{font-size:16px;line-height:1.5;color:#34446E}
+.bubble{position:relative;align-self:flex-start;max-width:92%;background:#E6F0FF;color:#021155;border-radius:22px 22px 22px 6px;padding:18px 20px;font-size:17px;line-height:1.45;font-weight:600;margin:6px 0 10px}
+.bubble::after{content:"";position:absolute;left:14px;bottom:-9px;width:18px;height:18px;background:#E6F0FF;transform:rotate(45deg);border-radius:3px}
+@media (max-width:760px){
+  .tl{grid-template-columns:1fr;gap:26px}
+  .tl-track{top:24px;bottom:24px;left:23px;right:auto;width:4px;height:auto}
+  .tl-fill{transform:scaleY(0);transform-origin:top center;transition:transform 2.3s cubic-bezier(.4,.1,.3,1)}
+  .tl.in .tl-fill{transform:scaleY(1)}
+}
+.ago{font-size:12px;font-weight:600;color:#34446E}
+.hecho{display:inline-flex;align-items:center;gap:6px;color:#fff;text-decoration:none;font-size:13px}
+.hecho-logo{height:18px;width:auto;display:inline-block;vertical-align:middle}
+@media (prefers-reduced-motion: reduce){
+  .tl-item{opacity:1;transform:none;transition:none}
+  .tl-fill{transform:none;transition:none}
+  .tl-node{animation:none}
+  .tl-end{opacity:1;transform:none;transition:none}
+  .tl-ok{animation:none!important}
+  .cf{display:none}
+}
+.cdk{display:flex;align-items:flex-end;justify-content:space-between;gap:6px;background:#2a2a2a;background:linear-gradient(180deg,#0a2a8a 0%,#021155 100%);border-radius:22px;padding:18px 18px 16px;letter-spacing:0}
+.cdk-u{display:flex;flex-direction:column;gap:4px;min-width:0}
+.cdk-l{font-size:14px;font-weight:400;color:#fff;letter-spacing:0;line-height:1.2}
+.cdk-n{font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;font-size:clamp(50px,5.4vw,80px);line-height:.92;color:#fff;letter-spacing:0;text-shadow:0 6px 14px rgba(0,0,0,.45)}
+.cdk-x{font-style:normal;font-weight:900;font-family:'Barlow Condensed',Impact,sans-serif;font-size:clamp(40px,4.4vw,64px);line-height:.92;color:#fff;padding-bottom:4px;letter-spacing:0;text-shadow:0 6px 14px rgba(0,0,0,.45)}
+
+.nav{padding:10px 10px 10px 20px}
+.nav img{height:46px!important}
+.nav-links{flex:1;justify-content:center;font-size:17px;font-weight:700;gap:clamp(18px,2.6vw,42px)}
+.nav-links a{padding:8px 4px;border-bottom:2px solid transparent;transition:border-color .2s,color .2s}
+.nav-links a:hover{border-bottom-color:#DF212F}
+
+/* Portada: foto fija con degradado en los bordes */
+.hero{isolation:isolate}
+.hero>.hero-cols{position:relative;z-index:1}
+.hero-txt{max-width:760px}
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:6px}
+.badge{position:static;display:inline-block;padding:12px 18px;border-radius:16px;font-weight:700;font-size:16px;box-shadow:0 10px 20px rgba(0,0,0,.25)}
+.b-red{background:#DF212F;color:#fff;transform:rotate(-3deg)}
+.b-navy{background:#021155;color:#fff;transform:rotate(2deg)}
+.b-white{background:#fff;color:#021155;transform:rotate(-1deg)}
+/* Expo mas pequeno */
+.expo{flex:0 1 290px;max-width:300px;padding:12px;gap:10px;border-radius:26px}
+.expo .gray{border-radius:18px!important;max-height:330px}
+.expo .display{font-size:26px!important}
+.cdk{padding:12px 12px 10px;border-radius:16px}
+.cdk-n{font-size:clamp(30px,3vw,44px)}
+.cdk-x{font-size:clamp(26px,2.4vw,36px)}
+.cdk-l{font-size:12px}
+.expo .btn{min-height:44px!important;font-size:14px!important}
+@media (max-width:760px){
+  .sec{padding:48px 16px}
+  .sec-prod,.sec-close{padding-top:48px!important;padding-bottom:48px!important}
+  .head{margin-bottom:22px;gap:10px}
+  .head-l{gap:10px;flex-basis:100%}
+  .h2{font-size:clamp(32px,9.6vw,44px);line-height:.95}
+  .lead{font-size:15px;line-height:1.5}
+  .hero{padding-bottom:28px}
+  .benef{padding-top:0;padding-bottom:0}
+  .tl{gap:14px}
+  .tl-track{left:19px;top:20px;bottom:20px}
+  .tl-item{flex-direction:row;align-items:flex-start;gap:12px}
+  .tl-node{width:40px;height:40px;font-size:18px;box-shadow:0 0 0 4px rgba(255,255,255,.2)}
+  .tl .step{border-radius:20px;padding:10px;flex-direction:row;align-items:center;gap:12px}
+  .tl .step img,.tl .step .gray{flex:none;width:40%;aspect-ratio:1/1!important;height:auto;border-radius:14px;object-fit:cover;padding:6px;gap:3px}
+  .tl .step .gray svg{width:22px;height:22px}
+  .tl .step .bubble{flex:none;width:52%;margin:0;align-self:center;padding:12px 14px;font-size:14px;line-height:1.35;border-radius:16px 16px 16px 4px}
+  .tl .step .gray b{font-size:10px;line-height:1.15}
+  .tl .step .gray span{font-size:9px;line-height:1.15}
+  .tl .step .step-t{padding:0}
+  .tl .step .step-t b{font-size:17px;margin-bottom:2px}
+  .tl .step .step-t span{font-size:14px;line-height:1.4}
+  .tl-end{margin-top:2px}
+  .tl-ok{width:48px;height:48px}
+  .tcard{padding:12px;gap:10px;border-radius:20px}
+  .tcard .gray{aspect-ratio:2.6/1!important;padding:8px}
+  .tcard blockquote{font-size:15px;line-height:1.5}
+}
+.hero{overflow:visible;overflow-x:clip;z-index:2}
+.benef{margin-top:36px}
+.cdk{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;align-items:end;justify-items:center;gap:4px}
+.cdk-u{align-items:center}
+@media (max-width:760px){.expo{box-shadow:0 22px 44px rgba(2,17,85,.4);flex:1 1 100%;max-width:none}.cdk-l{font-size:11px}.cdk-n{font-size:clamp(34px,10vw,44px)}.cdk-x{font-size:clamp(26px,7vw,34px)}.cdk{padding:12px 8px 10px}}
+@media (max-width:760px){.benef{margin-top:28px}.benef-in{padding:10px 14px;border-radius:22px;gap:0}.benef-it{padding:8px 4px;gap:12px}.benef-ic{width:42px;height:42px}.benef-ic svg{width:20px;height:20px}.benef-it b{font-size:15px}}
+@media (max-width:760px){.hero{padding-bottom:96px}}
+@media (max-width:760px){.expo .gray{width:100%;max-width:300px;max-height:none;align-self:center;margin:0 auto}}
+.grupo{border-top:1px solid rgba(255,255,255,.18);padding-top:28px;display:flex;flex-direction:column;gap:18px}
+.grupo-t b{display:block;font-family:'Barlow Condensed',Impact,sans-serif;font-weight:900;text-transform:uppercase;font-size:clamp(24px,2.4vw,32px);line-height:1;color:#fff;letter-spacing:0;margin-bottom:8px}
+.grupo-t p{margin:0;max-width:62ch;font-size:15px;line-height:1.6;color:rgba(255,255,255,.8)}
+.grupo-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}
+.grupo-c{display:flex;flex-direction:column;gap:6px;padding:18px;border-radius:18px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);text-decoration:none;color:#fff;transition:background .2s,border-color .2s}
+.grupo-c:hover{background:rgba(255,255,255,.13);border-color:rgba(255,255,255,.35)}
+.grupo-c b{font-size:18px}
+.grupo-c span{font-size:14px;line-height:1.5;color:rgba(255,255,255,.78)}
+.grupo-c i{font-style:normal;font-size:13px;font-weight:700;color:#7CC4FF;margin-top:4px}
+.grupo-btns{display:flex;flex-wrap:wrap;gap:10px}
+.grupo-btns .btn{min-height:48px;font-size:15px;padding:0 24px}
+.legal{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;font-size:13px;color:rgba(255,255,255,.65)}
+.legal a{color:rgba(255,255,255,.85);text-decoration:underline;text-underline-offset:3px}
+.legal a:hover{color:#fff}
+@media (min-width:761px){
+  .hero::before{inset:0 auto 0 50%;width:auto;height:100%;aspect-ratio:16/9;transform:translateX(-85%);background-size:100% 100%;background-position:center;
+    -webkit-mask-image:linear-gradient(180deg,#000 0,#000 76%,transparent 100%),linear-gradient(90deg,#000 0,#000 90%,transparent 100%);-webkit-mask-composite:source-in;
+    mask-image:linear-gradient(180deg,#000 0,#000 76%,transparent 100%),linear-gradient(90deg,#000 0,#000 90%,transparent 100%);mask-composite:intersect}
+  .hero h1,.hero .lead,.hero .note{text-shadow:0 2px 18px rgba(2,17,85,.55)}
+}
+.nav-wrap{margin-bottom:-82px}
+.hero{padding-top:192px}
+@media (max-width:760px){.hero{padding-top:400px}.hero::before{height:512px}}
+@media (min-width:761px){.hero-cols{justify-content:space-between}.hero-txt{flex:0 1 540px;max-width:540px}}
+@media (min-width:761px){.hero::before{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 42%,transparent 88%),linear-gradient(90deg,#000 0,#000 90%,transparent 100%);mask-image:linear-gradient(180deg,#000 0,#000 42%,transparent 88%),linear-gradient(90deg,#000 0,#000 90%,transparent 100%)}}
+@media (max-width:760px){.hero::before{-webkit-mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 90%);mask-image:linear-gradient(180deg,#000 0,#000 45%,transparent 90%)}}
+.loop-wrap{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 9%,#000 91%,transparent 100%)}
+.loop-l,.loop-r{animation-play-state:running!important}
+@media (max-width:760px){.loop-wrap{-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%);mask-image:linear-gradient(90deg,transparent 0,#000 14%,#000 86%,transparent 100%)}}
+@media (min-width:761px){.hero{padding-bottom:104px}.sec{padding-top:64px;padding-bottom:64px}.sec-suc{padding-top:24px}.sec-prod,.sec-close{padding-top:64px!important;padding-bottom:64px!important}.head{margin-bottom:32px}}
+.hero{min-height:0}
+@media (min-width:761px){.hero{padding-top:160px;padding-bottom:48px}.sec{padding-top:48px;padding-bottom:48px}.sec-how{padding-bottom:40px}.sec-faq{padding-top:40px}.sec-prod,.sec-close{padding-top:48px!important;padding-bottom:48px!important}.head{margin-bottom:28px}}
+</style>
+<style>[hidden]{display:none!important}</style>
+</head>
+<body>
+
+
+
+<div id="spot" class="spot" aria-hidden="true"></div>
+
+<!-- TICKER -->
+<div class="ticker">
+<div class="ticker-track">
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin membresía</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin mínimo de compra</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Por caja, bulto o pieza</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>14 sucursales en Tabasco, Chiapas, Veracruz y Campeche</span>
+<span data-expo style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Expo Abarrotera Sánchez 2026 · 29 de octubre</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin membresía</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin mínimo de compra</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Por caja, bulto o pieza</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>14 sucursales en Tabasco, Chiapas, Veracruz y Campeche</span>
+<span data-expo style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Expo Abarrotera Sánchez 2026 · 29 de octubre</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin membresía</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin mínimo de compra</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Por caja, bulto o pieza</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>14 sucursales en Tabasco, Chiapas, Veracruz y Campeche</span>
+<span data-expo style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Expo Abarrotera Sánchez 2026 · 29 de octubre</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin membresía</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Sin mínimo de compra</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Por caja, bulto o pieza</span>
+<span style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>14 sucursales en Tabasco, Chiapas, Veracruz y Campeche</span>
+<span data-expo style="display:inline-flex;align-items:center;gap:13px"><span class="dot"></span>Expo Abarrotera Sánchez 2026 · 29 de octubre</span>
+
+</div>
+</div>
+
+<!-- NAV FIJO -->
+<div class="nav-wrap">
+<nav class="nav" aria-label="Menú principal">
+<a href="#inicio" aria-label="Abarrotera Sánchez, inicio" style="display:flex;align-items:center;text-decoration:none;flex:none">
+<img src="img/logo-abarrotera.svg" alt="Abarrotera Sánchez" style="height:39px;width:auto;display:block">
+</a>
+<div class="nav-links">
+<a href="#sucursales">Sucursales</a>
+<a href="#productos" style="display:none">Productos</a>
+<a href="#como-comprar">Cómo comprar</a>
+<a data-expo href="#expo">Expo 2026</a>
+<a href="#preguntas">Preguntas</a>
+</div>
+<div style="display:flex;align-items:center;gap:8px">
+<a href="#sucursales" class="btn btn-r btn-sm hide-sm" style="min-height:48px;font-size:16px;padding:0 21px">Encuentra tu sucursal</a>
+<button type="button" class="menu-btn" id="menuBtn" aria-label="Abrir menú" aria-expanded="false">
+<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu" hidden>
+<a href="#sucursales">Sucursales</a>
+<a href="#productos" style="display:none">Productos</a>
+<a href="#como-comprar">Cómo comprar</a>
+<a data-expo href="#expo">Expo 2026</a>
+<a href="#preguntas">Preguntas</a>
+<a href="#sucursales" class="btn btn-r" style="margin-top:6px">Encuentra tu sucursal</a>
+</div>
+
+</div>
+
+<!-- HERO -->
+<section id="inicio" class="hero">
+<div class="hero-cols">
+<div class="hero-copy">
+<div class="hero-txt">
+<span class="pill"><span class="label" style="font-size:11px">Sin membresía</span></span>
+<h1 class="display">Mayoreo para la <span class="mark">tiendita</span> de la esquina.</h1>
+<div style="display:flex;align-items:center;gap:10px">
+<svg width="42" height="26" viewBox="0 0 44 28" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M2 4c10 2 22 8 34 20M36 24l-1-9M36 24l-9-2"></path></svg>
+<span class="note">Sí, también para la de tu cuadra.</span>
+</div>
+<p class="lead" style="font-size:clamp(17px,1.4vw,21px);max-width:34em;font-weight:500;color:#fff">Abarrotes, bebidas, limpieza, cuidado personal y lo de las mascotas en un solo lugar. <b>Sin membresía y sin mínimo de compra.</b></p>
+<div class="hero-cta">
+<a href="#sucursales" class="btn btn-w">Encuentra tu sucursal
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+<div class="avatars">
+<div style="display:flex">
+<img src="img/suc-comalcalco.jpg" alt="">
+<img src="img/suc-huimanguillo.jpg" alt="">
+<img src="img/suc-ocosingo.jpg" alt="">
+<img src="img/suc-ciudad-del-carmen.jpg" alt="">
+</div>
+<span><b>14 sucursales</b> en Tabasco, Chiapas, Veracruz y Campeche</span>
+</div>
+</div>
+</div>
+
+<!-- FLYER EXPO (se oculta al llegar a cero) -->
+
+<aside data-expo id="expo" class="expo" aria-label="Expo Abarrotera Sánchez 2026">
+<span class="expo-tag label" style="font-size:12px"><span class="live"></span>Evento</span>
+<img src="img/flyer-expo.jpg" alt="Flyer de la Expo Abarrotera Sánchez 2026: jueves 29 de octubre, 9:00 a.m., Nave 3, Parque Tabasco" style="display:block;width:100%;height:auto;border-radius:18px">
+<div style="padding:0 8px 8px;display:flex;flex-direction:column;gap:12px">
+<div class="cdk" role="timer" aria-label="Tiempo para la Expo">
+<div class="cdk-u"><span class="cdk-l">Días</span><b class="cdk-n" data-cd="dias">02</b></div>
+<i class="cdk-x">:</i>
+<div class="cdk-u"><span class="cdk-l">Horas</span><b class="cdk-n" data-cd="horas">17</b></div>
+<i class="cdk-x">:</i>
+<div class="cdk-u"><span class="cdk-l">Minutos</span><b class="cdk-n" data-cd="min">43</b></div>
+<i class="cdk-x">:</i>
+<div class="cdk-u"><span class="cdk-l">Segundos</span><b class="cdk-n" data-cd="seg">07</b></div>
+</div>
+<a href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Expo%20Abarrotera%20S%C3%A1nchez%202026&amp;dates=20261029T150000Z/20261029T160000Z&amp;details=Inicia%20a%20las%209%3A00%20a.m.&amp;location=Nave%203%2C%20Parque%20Tabasco%2C%20Villahermosa%2C%20Tabasco" target="_blank" rel="noopener" class="btn btn-b" style="min-height:50px;font-size:16px">Guárdalo en tu calendario</a>
+</div>
+</aside>
+
+</div>
+</section>
+
+<!-- SUCURSALES -->
+<section id="sucursales" class="sec sec-suc">
+<div class="head">
+<div class="head-l">
+<span class="kicker">Sucursales</span>
+<h2 class="display h2">Seguro tienes una cerca.</h2>
+</div>
+<div class="filters" role="group" aria-label="Filtrar por estado">
+
+<button type="button" class="filt" data-filter="Todas" aria-pressed="true" style="background:#FFFFFF;color:#021155">Todas <span style="opacity:.7">(14)</span></button>
+
+<button type="button" class="filt" data-filter="Tabasco" aria-pressed="false" style="background:transparent;color:#FFFFFF">Tabasco <span style="opacity:.7">(9)</span></button>
+
+<button type="button" class="filt" data-filter="Chiapas" aria-pressed="false" style="background:transparent;color:#FFFFFF">Chiapas <span style="opacity:.7">(3)</span></button>
+
+<button type="button" class="filt" data-filter="Veracruz" aria-pressed="false" style="background:transparent;color:#FFFFFF">Veracruz <span style="opacity:.7">(1)</span></button>
+
+<button type="button" class="filt" data-filter="Campeche" aria-pressed="false" style="background:transparent;color:#FFFFFF">Campeche <span style="opacity:.7">(1)</span></button>
+
+</div>
+</div>
+<div class="suc-grid">
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-central-de-abastos.jpg" alt="Fachada de la sucursal Central de Abastos" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Central de Abastos</b>
+<p>Central de Abastos Bodega 3, 4 y 5, Fracc. Carrizal, 86038 Villahermosa, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529933540181?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Central%20de%20Abastos.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529933540181" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/w84oAZsxBrMnPCEh7" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-cd-industrial.jpg" alt="Fachada de la sucursal Cd. Industrial" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Cd. Industrial</b>
+<p>Blvd. Industria Nacional Mexicana, Villa de las Flores, 86019 Villahermosa, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529933530962?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Cd.%20Industrial.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529933530962" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/6brDUEisPV7uW9569" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-cardenas.jpg" alt="Fachada de la sucursal Cárdenas" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Cárdenas</b>
+<p>Jacinto López, Pueblo Nuevo, 86560 Cárdenas, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529373722955?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20C%C3%A1rdenas.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529373722955" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/x15NVi2EsfNB3hdj9" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-cardenas-2.jpg" alt="Fachada de la sucursal Cárdenas 2" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Cárdenas 2</b>
+<p>Lázaro Cárdenas del Río 1017, Centro, 86560 Cárdenas, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529373726482?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20C%C3%A1rdenas%202.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529373726482" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/13uUQcgFLdpwMfnz7" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-comalcalco.jpg" alt="Fachada de la sucursal Comalcalco" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Comalcalco</b>
+<p>Blvd. Leandro Rovirosa Wade 432, Santa Amalia, 86370 Comalcalco, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529333341038?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Comalcalco.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529333341038" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/smrenruG9NMYHDbx6" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-huimanguillo.jpg" alt="Fachada de la sucursal Huimanguillo" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Huimanguillo</b>
+<p>C. Ignacio Gutiérrez 104, Centro, 86400 Huimanguillo, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529173751532?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Huimanguillo.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529173751532" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/TQvCdNPiKcx2ZwaJA" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-macuspana.jpg" alt="Fachada de la sucursal Macuspana" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Macuspana</b>
+<p>Centro, 86700 Macuspana, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529363620409?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Macuspana.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529363620409" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/ti5We3Mcak9HC6Ws5" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-emiliano-zapata.jpg" alt="Fachada de la sucursal Emiliano Zapata" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Emiliano Zapata</b>
+<p>Av. Abasolo 112, El Recreo, 86997 Emiliano Zapata, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529343431123?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Emiliano%20Zapata.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529343431123" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/B87bn8ST1aHiV1Co6" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Tabasco">
+<div class="suc-img">
+<img src="img/suc-tenosique.jpg" alt="Fachada de la sucursal Tenosique" loading="lazy">
+<span class="tagst">Tabasco</span>
+</div>
+<div class="suc-b">
+<b>Suc. Tenosique</b>
+<p>Usumacinta s/n, Chivo Negro, Tenosique, Tab.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529343420294?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Tenosique.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529343420294" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/aC3NB4a6ju8UaJ7E7" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Chiapas">
+<div class="suc-img">
+<img src="img/suc-palenque-1.jpg" alt="Fachada de la sucursal Palenque 1" loading="lazy">
+<span class="tagst">Chiapas</span>
+</div>
+<div class="suc-b">
+<b>Suc. Palenque 1</b>
+<p>Palenque, Chis. Abre la ubicación en el mapa.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529163451288?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Palenque%201.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529163451288" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/Cbg4KV1vmL2Z1Sbm9" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Chiapas">
+<div class="suc-img">
+<img src="img/suc-palenque-2.jpg" alt="Fachada de la sucursal Palenque 2" loading="lazy">
+<span class="tagst">Chiapas</span>
+</div>
+<div class="suc-b">
+<b>Suc. Palenque 2</b>
+<p>Palenque, Chis. Abre la ubicación en el mapa.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529163454299?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Palenque%202.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529163454299" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/kWwfisCWkUfVcP8x5" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Chiapas">
+<div class="suc-img">
+<img src="img/suc-ocosingo.jpg" alt="Fachada de la sucursal Ocosingo" loading="lazy">
+<span class="tagst">Chiapas</span>
+</div>
+<div class="suc-b">
+<b>Suc. Ocosingo</b>
+<p>Internacional 285, Norte, 29950 Ocosingo, Chis.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529196730424?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Ocosingo.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529196730424" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/2dqTqvmPjn4eXxT27" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Veracruz">
+<div class="suc-img">
+<img src="img/suc-minatitlan.jpg" alt="Fachada de la sucursal Minatitlán" loading="lazy">
+<span class="tagst">Veracruz</span>
+</div>
+<div class="suc-b">
+<b>Suc. Minatitlán</b>
+<p>Nueva Mina, 96700 Minatitlán, Ver.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529222213739?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Minatitl%C3%A1n.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529222213739" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/afuPBfHsrS6ro8gi7" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+<article class="suc lift" data-estado="Campeche">
+<div class="suc-img">
+<img src="img/suc-ciudad-del-carmen.jpg" alt="Fachada de la sucursal Ciudad del Carmen" loading="lazy">
+<span class="tagst">Campeche</span>
+</div>
+<div class="suc-b">
+<b>Suc. Ciudad del Carmen</b>
+<p>Av. Juárez 2678, Morelos, 24115 Cd. del Carmen, Camp.</p>
+<div class="suc-btns">
+<a href="https://wa.me/529381111103?text=Hola%2C%20quiero%20hacer%20un%20pedido%20en%20la%20Suc.%20Ciudad%20del%20Carmen.%20%C2%BFMe%20ayudan%3F" target="_blank" rel="noopener" class="btn btn-g wide"><svg width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm0 18.150h-.01c-1.48 0-2.93-.4-4.2-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.82 2.42a8.19 8.19 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.27 8.23zm4.52-6.17c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.79.98-.14.17-.29.19-.54.06-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.38-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.14.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.35-.77-1.85-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.23.25-.87.85-.87 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.14-1.18-.06-.11-.22-.17-.47-.29z"></path></svg> WhatsApp<span class="wa-x"> de esta sucursal</span></a>
+<a href="tel:+529381111103" class="btn btn-b">Llamar</a>
+<a href="https://maps.app.goo.gl/ZEtYEjicC1te2GBEA" target="_blank" rel="noopener" class="btn btn-w" style="color:#021155;border:2px solid #021155;background:#fff">Cómo llegar</a>
+</div>
+</div>
+</article>
+
+</div>
+</section>
+
+<!-- BENEFICIOS -->
+<section class="benef">
+<div class="benef-in card">
+<div class="benef-it"><span class="benef-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0442CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="M3 10h18M4 4l16 16"></path></svg></span><b>Sin membresía</b></div>
+<div class="benef-it"><span class="benef-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0442CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v18M5 10l7-7 7 7"></path></svg></span><b>Sin mínimo de compra</b></div>
+<div class="benef-it"><span class="benef-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0442CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 8l-9-5-9 5 9 5 9-5zM3 8v8l9 5 9-5V8M12 13v8"></path></svg></span><b>Por caja, bulto o pieza</b></div>
+<div class="benef-it"><span class="benef-ic"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#0442CF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h10"></path></svg></span><b>Todo en una sola visita</b></div>
+</div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="sec sec-prod" style="display:none">
+<div class="head">
+<div class="head-l">
+<span class="kicker">Productos</span>
+<h2 class="display h2">Todo lo que vende tu tiendita, en un solo lugar.</h2>
+</div>
+<p class="lead" style="flex:1 1 260px">Abarrotes, bebidas, limpieza, cuidado personal y mascotas. Por caja, por bulto o por pieza.</p>
+</div>
+<div class="loop-wrap">
+<div class="loop-l">
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 01</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Arroz</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 02</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Frijol</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 03</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Aceite</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 04</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Azúcar</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 05</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Refrescos</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 06</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Agua embotellada</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 01</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Arroz</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 02</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Frijol</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 03</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Aceite</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 04</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Azúcar</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 05</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Refrescos</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 06</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Agua embotellada</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 01</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Arroz</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 02</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Frijol</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 03</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Aceite</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 04</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Azúcar</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 05</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Refrescos</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 06</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Agua embotellada</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 01</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Arroz</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 02</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Frijol</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 03</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Aceite</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 04</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Azúcar</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 05</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Refrescos</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 06</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">BEBIDAS</span><b style="font-size:16px">Agua embotellada</b></div>
+</div>
+
+</div>
+<div class="loop-r">
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 07</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Detergente</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 08</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Cloro</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 09</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Papel higiénico</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 10</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Jabón de tocador</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 11</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">MASCOTAS</span><b style="font-size:16px">Croquetas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 12</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Botanas y galletas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 07</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Detergente</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 08</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Cloro</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 09</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Papel higiénico</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 10</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Jabón de tocador</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 11</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">MASCOTAS</span><b style="font-size:16px">Croquetas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 12</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Botanas y galletas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 07</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Detergente</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 08</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Cloro</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 09</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Papel higiénico</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 10</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Jabón de tocador</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 11</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">MASCOTAS</span><b style="font-size:16px">Croquetas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 12</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Botanas y galletas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 07</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Detergente</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 08</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">LIMPIEZA</span><b style="font-size:16px">Cloro</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 09</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Papel higiénico</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 10</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">CUIDADO PERSONAL</span><b style="font-size:16px">Jabón de tocador</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 11</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">MASCOTAS</span><b style="font-size:16px">Croquetas</b></div>
+</div>
+
+<div class="pcard">
+<div class="gray">
+<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h3l2-3h6l2 3h3v13H4z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+<b>Foto de producto 12</b>
+<span>PNG sin fondo, 1:1 · 1000 × 1000 px</span>
+</div>
+<div class="pcard-t"><span class="cat">ABARROTES</span><b style="font-size:16px">Botanas y galletas</b></div>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CÓMO COMPRAR -->
+<section id="como-comprar" class="sec sec-how">
+<div class="head">
+<div class="head-l">
+<span class="kicker">Cómo se compra</span>
+<h2 class="display h2">Aquí no buscas en pasillos. Escoges y te lo traen.</h2>
+</div>
+<p class="lead" style="flex:1 1 260px">Tres pasos. Sin registro y sin tarjeta de socio.</p>
+</div>
+<div class="tl" id="tl">
+<div class="tl-track"><div class="tl-fill"></div></div>
+<div class="tl-item">
+<span class="tl-node">1</span>
+<div class="step">
+<div class="bubble">Ya llegué a la sucursal. ¿Dónde escojo?</div>
+<div class="step-t"><div><b>Llega a tu sucursal</b><span>No necesitas registro ni tarjeta de socio.</span></div></div>
+</div>
+</div>
+<div class="tl-item">
+<span class="tl-node">2</span>
+<div class="step">
+<div class="bubble">Necesito una caja de refresco y un bulto de arroz.</div>
+<div class="step-t"><div><b>Escoge en el panel</b><span>En recepción eliges lo que necesitas, por caja, bulto o pieza.</span></div></div>
+</div>
+</div>
+<div class="tl-item">
+<span class="tl-node">3</span>
+<div class="step">
+<div class="bubble">¡Perfecto, ya tengo mi pedido completo. Gracias!</div>
+<div class="step-t"><div><b>Te lo traen completo</b><span>Alguien del equipo junta tu pedido y te lo entrega.</span></div></div>
+</div>
+</div>
+<div class="tl-end"><span class="tl-ok"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg><i class="cf" style="--x:69px;--y:14px;--r:0deg;--c:#fff"></i><i class="cf" style="--x:73px;--y:56px;--r:53deg;--c:#DF212F"></i><i class="cf" style="--x:52px;--y:101px;--r:106deg;--c:#7CC4FF"></i><i class="cf" style="--x:2px;--y:70px;--r:159deg;--c:#fff"></i><i class="cf" style="--x:-38px;--y:84px;--r:212deg;--c:#DF212F"></i><i class="cf" style="--x:-87px;--y:73px;--r:265deg;--c:#7CC4FF"></i><i class="cf" style="--x:-68px;--y:17px;--r:318deg;--c:#fff"></i><i class="cf" style="--x:-90px;--y:-18px;--r:11deg;--c:#DF212F"></i><i class="cf" style="--x:-91px;--y:-69px;--r:64deg;--c:#7CC4FF"></i><i class="cf" style="--x:-32px;--y:-62px;--r:117deg;--c:#fff"></i><i class="cf" style="--x:-2px;--y:-92px;--r:170deg;--c:#DF212F"></i><i class="cf" style="--x:47px;--y:-104px;--r:223deg;--c:#7CC4FF"></i><i class="cf" style="--x:54px;--y:-45px;--r:276deg;--c:#fff"></i><i class="cf" style="--x:89px;--y:-23px;--r:329deg;--c:#DF212F"></i></span><b>¡Listo, a vender!</b><span>Así de fácil. Tu pedido ya va contigo.</span></div>
+</div>
+</section>
+
+<!-- PREGUNTAS -->
+<section id="preguntas" class="sec sec-faq">
+<div class="faq">
+<div class="faq-l">
+<span class="kicker">Preguntas</span>
+<h2 class="display h2" style="font-size:clamp(44px,5vw,84px)">Lo que todos preguntan antes de venir.</h2>
+<p class="lead">¿Otra duda? Llama al <a href="tel:+529931035180" style="font-weight:800;color:#fff">993 103 5180</a> o escribe a <a href="mailto:Clientes@sanchezgrupo.com" style="font-weight:800;color:#fff">Clientes@sanchezgrupo.com</a>.</p>
+</div>
+<div class="faq-r">
+
+<div class="qa">
+<button type="button" data-faq="0" aria-expanded="true">¿Necesito membresía?
+<span class="qa-ic" style="background:#021155;color:#FFFFFF">−</span>
+</button>
+
+<p>No. Llegas a cualquier sucursal y compras, sin registro ni tarjeta de socio.</p>
+
+</div>
+
+<div class="qa">
+<button type="button" data-faq="1" aria-expanded="false">¿Hay un mínimo de compra?
+<span class="qa-ic" style="background:#0442CF;color:#FFFFFF">+</span>
+</button>
+
+<p hidden>No. Puedes pedir por caja, por bulto o por pieza.</p>
+
+</div>
+
+<div class="qa">
+<button type="button" data-faq="2" aria-expanded="false">¿Puedo entrar a buscar mis productos?
+<span class="qa-ic" style="background:#0442CF;color:#FFFFFF">+</span>
+</button>
+
+<p hidden>No hace falta. Escoges en el panel de recepción y alguien del equipo junta tu pedido y te lo trae.</p>
+
+</div>
+
+<div class="qa">
+<button type="button" data-faq="3" aria-expanded="false">¿Qué venden?
+<span class="qa-ic" style="background:#0442CF;color:#FFFFFF">+</span>
+</button>
+
+<p hidden>Abarrotes, bebidas, limpieza, cuidado personal y productos para mascotas.</p>
+
+</div>
+
+<div class="qa">
+<button type="button" data-faq="4" aria-expanded="false">¿Me venden si mi negocio es chico?
+<span class="qa-ic" style="background:#0442CF;color:#FFFFFF">+</span>
+</button>
+
+<p hidden>Sí. Aquí compran tienditas, fondas, puestos de comida y restaurantes.</p>
+
+</div>
+
+<div class="qa">
+<button type="button" data-faq="5" aria-expanded="false">¿Dónde están?
+<span class="qa-ic" style="background:#0442CF;color:#FFFFFF">+</span>
+</button>
+
+<p hidden>Tenemos 14 sucursales en Tabasco, Chiapas, Veracruz y Campeche. Búscala en Sucursales.</p>
+
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- CIERRE -->
+<section class="sec sec-close" style="padding:110px clamp(16px,3.2vw,55px)">
+<div class="close">
+<h2 class="ganas"><svg viewBox="138 14 314 304" role="img" aria-label="¡Ganas porque ganas!" xmlns="http://www.w3.org/2000/svg"><defs><path id="gp" d="M151.7 307.7C143.3 305.9 141.1 297.9 142.3 274.3C142.5 270.5 142.6 269.6 143.0 265.7C144.9 249.2 151.3 240.3 163.7 236.7C179.7 232.2 188.5 237.9 188.5 252.8C188.5 255.1 188.3 255.4 186.0 255.7C185.4 255.8 183.7 256.0 182.2 256.2C180.7 256.5 178.7 256.8 177.8 256.9C176.8 257.1 175.4 257.3 174.5 257.5C172.0 258.1 171.8 257.9 171.8 254.8C171.8 249.5 170.4 247.2 167.3 247.8C162.7 248.7 161.2 252.6 160.3 266.2C158.9 289.7 159.5 294.9 163.7 294.9C167.8 294.9 170.1 291.2 170.9 283.4C171.4 279.4 171.0 279.1 166.4 280.3C165.5 280.5 165.2 279.8 165.3 277.6C165.7 268.4 165.6 268.7 166.7 268.4C167.2 268.2 170.6 267.6 174.5 267.0C175.6 266.8 176.7 266.6 176.8 266.6C177.0 266.5 178.7 266.3 180.6 266.0C182.5 265.7 184.6 265.4 185.1 265.2C188.0 264.6 188.3 265.1 187.7 271.1C187.6 272.0 187.4 275.3 187.3 278.4C187.1 281.6 187.0 284.4 186.9 284.8C186.9 285.1 186.8 287.6 186.7 290.2C186.3 298.6 186.1 301.3 185.7 301.7C185.3 302.1 175.9 303.8 175.3 303.6C174.6 303.4 174.4 302.9 174.5 301.5C174.5 299.0 174.0 298.7 172.6 300.6C170.0 304.0 166.9 305.8 161.4 307.2C159.3 307.7 153.4 308.0 151.7 307.7ZM189.3 301.8C188.6 301.5 188.6 301.1 189.4 298.3C189.8 296.9 190.2 295.4 190.3 295.1C190.6 294.0 191.4 290.8 192.1 288.3C192.4 287.1 192.8 285.6 193.0 285.0C193.2 284.4 193.5 283.2 193.7 282.4C194.3 280.4 196.7 271.8 197.2 269.9C197.3 269.3 197.7 267.8 198.1 266.7C198.4 265.5 198.8 264.1 199.0 263.5C199.2 262.9 199.6 261.1 200.1 259.6C201.9 252.9 202.9 249.3 203.5 247.2C203.8 246.3 204.2 244.5 204.6 243.2C207.7 231.7 207.6 232.1 208.1 231.5C208.6 231.0 213.6 230.1 223.4 228.7C223.8 228.7 225.0 228.5 226.1 228.2C229.5 227.6 229.9 227.8 230.2 230.2C230.3 231.0 230.4 231.8 230.4 231.8C230.5 231.9 230.7 233.3 231.0 234.9C231.3 236.5 231.6 238.5 231.8 239.3C232.2 241.2 232.4 242.3 232.7 244.1C232.9 244.8 233.1 246.2 233.3 247.1C233.5 248.0 234.0 250.5 234.4 252.8C234.8 255.0 235.3 257.5 235.5 258.3C235.7 259.2 236.0 260.8 236.2 261.8C236.4 262.9 236.6 264.2 236.7 264.8C236.9 265.4 237.0 266.3 237.1 266.8C237.1 267.2 237.3 268.2 237.5 268.9C238.0 270.8 240.8 285.7 241.4 289.3C241.5 290.0 241.7 290.9 241.8 291.2C242.3 293.1 242.0 293.5 239.5 293.9C238.5 294.1 237.1 294.3 236.2 294.4C235.4 294.6 233.1 294.9 231.1 295.3C229.1 295.6 227.3 295.9 227.2 295.9C224.5 296.9 223.8 296.3 223.6 293.2C223.3 289.1 222.9 285.5 222.6 285.2C222.2 284.8 221.5 284.9 217.6 285.5C215.7 285.9 213.4 286.2 212.7 286.3C209.7 286.8 209.1 287.0 208.9 288.1C208.6 289.3 207.7 293.6 207.2 296.5C206.7 299.1 206.4 299.3 203.3 299.7C202.4 299.9 200.6 300.1 199.5 300.3C198.4 300.5 196.7 300.8 195.9 300.9C195.1 301.1 193.6 301.3 192.5 301.5C189.8 302.0 189.8 302.0 189.3 301.8ZM245.7 292.5C244.9 292.2 244.9 291.3 245.5 279.4C245.6 277.8 245.7 275.8 245.7 275.0C245.7 274.2 245.7 272.9 245.8 272.1C245.9 271.3 246.1 268.6 246.2 266.1C246.3 263.6 246.5 259.9 246.6 257.8C246.7 255.6 246.9 251.4 247.1 248.2C247.2 245.1 247.4 241.1 247.6 239.2C247.7 237.4 247.9 233.6 248.0 230.8C248.2 224.1 248.1 224.4 251.2 223.9C252.1 223.8 253.8 223.5 254.8 223.3C258.5 222.7 261.6 222.2 262.4 222.1C262.9 222.0 264.0 221.8 264.9 221.6C267.2 221.2 267.7 221.4 268.1 223.2C268.1 223.5 268.4 224.7 268.7 225.8C268.9 227.0 269.3 228.5 269.4 229.2C270.0 231.8 270.3 233.4 271.0 236.4C271.9 240.5 272.4 242.8 273.1 245.9C273.4 247.4 273.7 248.9 273.8 249.3C273.9 249.6 274.2 251.0 274.5 252.2C276.6 261.8 276.9 261.7 277.3 251.5C277.4 249.1 277.6 245.8 277.7 244.2C277.8 242.7 277.9 239.9 278.0 238.1C279.0 217.7 278.7 219.5 280.7 219.2C281.3 219.1 282.8 218.8 284.2 218.6C285.5 218.4 287.1 218.1 287.8 218.0C288.5 217.9 290.0 217.6 291.3 217.4C295.5 216.6 295.3 216.0 294.6 227.1C294.5 229.1 294.3 232.7 294.2 235.1C294.1 237.5 293.9 240.5 293.8 241.8C293.7 243.2 293.6 245.4 293.6 246.8C293.5 248.3 293.4 251.4 293.2 253.8C293.1 256.3 292.9 260.1 292.8 262.2C292.7 264.4 292.5 267.9 292.4 269.9C292.3 271.9 292.1 275.3 292.0 277.3C291.6 286.0 292.0 285.2 288.2 285.8C286.7 286.0 284.8 286.3 283.8 286.5C282.9 286.7 281.5 286.9 280.8 287.0C279.0 287.2 276.5 287.6 275.2 287.9C273.1 288.4 272.6 288.1 272.2 286.2C271.9 284.8 270.1 277.3 269.3 273.8C268.5 270.8 267.9 267.8 266.8 262.8C266.6 261.5 266.2 259.9 266.1 259.3C265.9 258.7 265.5 256.9 265.1 255.2C263.9 250.3 263.8 250.0 263.2 250.5C262.9 250.8 262.9 250.8 262.7 257.3C262.6 259.5 262.4 262.5 262.3 264.1C262.2 265.6 262.1 268.6 262.0 270.8C261.9 272.9 261.8 275.7 261.7 277.1C261.6 278.5 261.4 281.6 261.3 284.2C261.1 290.5 261.2 290.2 257.9 290.7C253.7 291.3 248.2 292.2 246.4 292.6C246.2 292.6 245.9 292.6 245.7 292.5ZM295.1 284.6C294.7 284.2 294.8 283.6 295.3 282.1C295.5 281.3 295.9 280.0 296.1 279.0C296.3 278.0 296.8 276.3 297.1 275.2C297.8 272.8 298.8 269.3 299.1 267.9C299.2 267.4 299.5 266.5 299.7 265.9C299.8 265.4 300.3 263.6 300.7 262.1C301.2 260.5 301.9 257.9 302.4 256.2C302.8 254.6 303.4 252.4 303.7 251.3C304.0 250.3 304.4 248.9 304.6 248.2C304.9 247.1 305.2 246.0 306.5 241.3C306.7 240.7 307.2 238.9 307.6 237.3C308.0 235.7 308.5 233.9 308.7 233.3C309.2 231.5 310.7 226.3 311.1 224.7C313.9 213.9 313.8 214.1 316.1 213.7C316.9 213.6 318.1 213.4 318.8 213.3C319.4 213.1 320.4 213.0 321.0 212.9C321.6 212.9 322.9 212.7 323.9 212.5C327.2 211.9 333.1 211.0 334.1 210.9C335.8 210.7 336.0 211.1 336.9 216.6C337.1 217.3 337.5 219.7 337.9 221.8C338.3 224.0 338.8 226.4 338.9 227.2C339.1 227.9 339.3 229.3 339.5 230.2C339.7 231.0 340.1 233.4 340.5 235.3C340.9 237.3 341.4 239.8 341.6 240.9C342.0 242.8 342.7 246.5 343.6 251.5C343.8 252.7 344.2 254.6 344.4 255.7C344.6 256.7 345.1 259.2 345.5 261.2C345.9 263.1 346.3 265.3 346.4 266.0C346.6 266.7 346.8 267.9 346.9 268.7C347.1 269.4 347.2 270.4 347.3 270.8C348.5 276.6 348.6 276.4 345.1 276.9C344.0 277.1 342.6 277.3 342.1 277.4C341.5 277.5 340.7 277.7 340.2 277.7C338.9 277.9 335.2 278.5 333.4 278.8C330.5 279.4 330.0 279.2 329.9 277.8C329.7 274.9 329.1 269.3 329.1 268.9C328.9 267.8 328.5 267.7 325.9 268.1C324.7 268.3 322.7 268.6 321.4 268.8C317.5 269.4 315.8 269.8 315.5 270.1C315.1 270.4 315.1 270.6 314.4 273.8C314.2 275.1 313.8 276.7 313.7 277.5C313.5 278.3 313.3 279.4 313.2 280.0C312.8 282.0 312.6 282.2 309.8 282.6C307.3 282.9 298.3 284.5 297.4 284.7C296.4 284.9 295.4 284.9 295.1 284.6ZM361.8 274.2C353.8 273.2 350.0 267.9 350.6 258.3C350.7 255.7 350.8 255.6 354.2 255.1C355.1 255.0 356.5 254.7 357.2 254.6C359.6 254.1 365.7 253.2 366.2 253.2C367.1 253.2 367.3 253.7 367.3 255.2C367.3 259.7 368.6 261.6 371.6 261.6C375.6 261.6 378.3 258.4 378.4 253.6C378.4 249.7 376.3 247.9 369.2 245.9C361.5 243.7 359.4 242.7 356.8 240.2C353.5 236.9 352.4 232.4 353.1 225.4C354.3 214.1 360.6 206.6 371.3 203.6C379.2 201.4 387.1 201.7 390.9 204.3C394.2 206.5 395.8 210.3 396.1 216.5C396.3 220.0 396.1 220.3 393.6 220.7C390.8 221.1 384.5 222.1 382.9 222.4C380.5 222.9 379.9 222.6 380.1 221.1C380.6 217.7 378.5 214.5 375.8 214.7C370.4 215.1 367.7 222.8 371.8 226.5C373.5 228.1 375.1 228.7 382.5 230.7C393.8 233.7 397.7 239.8 396.1 252.0C394.5 264.2 386.2 271.5 371.3 273.8C368.8 274.2 363.7 274.4 361.8 274.2ZM217.3 272.3C220.7 271.7 220.9 271.6 221.1 270.8C221.2 270.4 220.8 265.7 220.5 264.2C220.4 263.8 220.3 262.5 220.2 261.3C220.1 260.2 219.8 258.1 219.7 256.6C219.3 253.9 219.2 252.2 218.8 248.7C218.4 244.0 217.6 244.3 216.7 249.5C216.5 250.5 216.2 252.1 215.9 253.2C215.0 257.4 214.5 259.9 213.9 262.6C213.6 264.1 213.3 265.5 213.3 265.7C213.2 265.8 213.1 266.5 212.9 267.2C212.8 268.0 212.5 269.3 212.3 270.2C211.6 273.4 211.8 273.4 217.3 272.3ZM404.8 267.0C404.4 266.7 404.4 266.3 404.5 263.7C404.6 262.5 404.7 259.8 404.8 257.6C405.0 253.2 405.1 252.6 405.8 252.3C406.3 252.0 409.2 251.5 414.9 250.7C415.8 250.6 417.1 250.4 417.7 250.3C420.9 249.5 420.9 249.5 420.3 256.7C420.2 257.8 420.1 259.9 420.1 261.4C419.9 265.1 420.3 264.8 414.3 265.8C412.7 266.0 410.4 266.4 409.2 266.6C406.2 267.2 405.2 267.2 404.8 267.0ZM322.4 255.4C323.5 255.2 324.8 255.0 325.2 254.9C327.6 254.6 327.6 254.7 326.6 247.0C326.5 246.0 326.3 244.7 326.2 243.9C326.2 243.2 325.9 240.6 325.6 238.2C325.4 235.9 325.1 233.0 325.0 231.8C324.7 227.5 323.9 227.2 323.1 231.2C322.9 232.3 322.5 233.9 322.3 234.8C322.1 235.6 321.9 236.8 321.7 237.5C321.6 238.2 321.3 239.4 321.2 240.2C320.4 244.0 319.5 248.4 319.2 249.5C319.1 250.2 318.8 251.5 318.6 252.5C317.7 256.1 318.0 256.3 322.4 255.4ZM407.0 246.8C406.5 246.1 406.2 222.8 406.6 214.9C406.7 212.9 406.9 209.5 407.0 207.3C407.4 198.8 407.4 199.0 408.9 198.8C412.6 198.2 414.5 197.9 416.0 197.7C417.0 197.5 418.3 197.3 419.0 197.2C419.7 197.1 420.8 196.9 421.5 196.7C424.3 196.2 424.2 195.9 422.9 212.5C422.8 214.2 422.6 216.4 422.6 217.4C422.5 218.4 422.4 220.0 422.2 221.0C422.1 222.0 421.9 223.5 421.8 224.3C421.7 225.2 421.5 226.9 421.3 228.2C420.9 230.9 419.6 241.0 419.4 243.2C419.2 245.3 419.0 245.4 415.5 245.9C414.1 246.1 411.9 246.5 410.6 246.7C407.7 247.3 407.4 247.3 407.0 246.8ZM141.2 222.8C140.9 222.5 140.9 220.7 141.3 215.0C141.4 213.1 141.6 210.1 141.7 208.2C141.8 206.4 142.0 202.9 142.1 200.4C142.2 197.9 142.4 194.3 142.5 192.4C142.6 190.5 142.8 186.7 142.9 184.1C143.3 176.7 143.8 166.5 143.9 164.3C144.4 154.1 144.2 154.6 147.2 154.2C149.3 153.9 154.3 153.1 164.1 151.5C165.2 151.3 167.3 151.0 168.8 150.7C182.7 148.4 189.5 155.1 188.1 170.1C186.8 183.4 179.1 191.1 164.6 193.4C158.9 194.3 159.5 193.0 159.0 203.9C158.4 215.8 158.2 219.4 157.9 219.8C157.6 220.3 157.3 220.4 154.1 220.9C152.5 221.2 150.4 221.5 149.4 221.7C148.4 221.8 147.2 222.0 146.7 222.1C146.2 222.1 145.0 222.4 144.0 222.6C142.0 223.1 141.7 223.1 141.2 222.8ZM203.2 212.3C198.1 211.3 194.6 207.8 192.7 202.0C190.7 195.7 190.5 183.6 192.2 170.3C194.6 151.0 202.8 142.3 220.0 140.8C230.9 139.9 236.1 144.4 238.1 156.6C238.6 159.7 238.9 170.2 238.5 173.9C238.4 175.0 238.2 177.2 238.1 178.8C236.5 197.1 230.7 207.0 219.2 210.8C214.0 212.5 207.1 213.1 203.2 212.3ZM243.9 206.1C243.5 205.7 243.5 205.5 243.6 203.8C243.8 200.3 244.0 195.6 244.2 192.3C244.4 187.6 244.8 179.2 245.0 175.3C245.1 173.5 245.2 170.6 245.3 169.0C245.4 167.4 245.6 163.6 245.8 160.6C245.9 157.6 246.1 153.8 246.2 152.2C246.2 150.6 246.4 148.2 246.4 146.8C246.5 145.5 246.6 143.6 246.7 142.6C246.8 141.6 246.8 140.3 246.8 139.8C246.8 138.2 247.3 138.0 252.3 137.3C253.2 137.1 254.9 136.9 256.2 136.7C257.4 136.5 259.2 136.2 260.1 136.1C261.0 135.9 261.9 135.8 262.0 135.7C262.1 135.7 263.0 135.6 264.0 135.4C265.0 135.3 267.3 134.9 269.2 134.6C277.7 133.1 281.0 133.1 284.4 134.6C289.1 136.6 291.1 140.5 291.1 147.7C291.0 156.8 288.3 162.3 281.6 166.2C280.3 167.0 280.5 167.2 283.1 167.8C288.4 169.1 289.8 173.3 288.8 186.4C288.4 192.5 288.7 195.7 289.9 197.1C291.1 198.5 290.7 199.0 288.5 199.3C286.6 199.6 283.9 200.0 282.2 200.3C281.3 200.5 280.2 200.7 279.8 200.8C279.3 200.8 277.7 201.1 276.1 201.4C271.6 202.2 271.4 201.7 271.6 190.9C271.9 178.8 271.8 178.1 270.6 176.7C269.6 175.6 268.9 175.4 265.8 175.8C262.2 176.3 262.1 176.3 261.9 179.7C261.9 180.7 261.8 183.1 261.7 184.9C261.3 192.2 261.0 197.7 260.9 200.0C260.8 203.7 260.7 203.8 258.2 204.2C257.5 204.3 256.1 204.5 255.1 204.7C254.1 204.8 251.9 205.2 250.2 205.5C248.5 205.8 246.6 206.1 245.9 206.3C244.4 206.6 244.2 206.6 243.9 206.1ZM332.7 202.9C332.5 202.8 330.6 201.0 328.3 198.7C323.6 194.1 324.3 194.4 321.3 195.2C303.2 199.8 295.8 192.7 295.8 170.6C295.8 144.6 301.4 131.3 314.4 126.6C326.5 122.3 336.2 124.0 340.1 131.2C344.3 138.7 344.5 160.8 340.6 175.1C339.7 178.6 338.2 182.4 337.1 184.0C336.2 185.2 336.8 186.1 341.2 189.9C344.1 192.5 344.3 191.9 338.4 197.9C333.8 202.6 333.2 203.1 332.7 202.9ZM215.2 199.7C218.6 198.2 219.7 194.0 220.7 177.3C221.8 158.1 221.0 153.0 216.8 153.2C211.6 153.5 210.1 157.7 209.2 174.8C208.1 193.9 208.5 198.6 211.2 199.9C212.1 200.3 214.1 200.2 215.2 199.7ZM360.7 187.7C350.8 185.8 347.6 179.4 348.7 163.4C348.8 162.0 348.9 158.5 349.1 155.5C349.2 152.5 349.4 149.1 349.5 148.0C349.6 146.9 349.7 144.2 349.8 142.0C350.0 138.0 350.1 137.1 350.3 132.8C350.4 131.4 350.6 128.4 350.7 126.2C350.9 121.8 350.9 121.5 351.6 121.2C352.2 121.0 357.4 120.1 364.0 119.1C368.5 118.4 368.3 118.1 367.9 123.7C367.6 128.7 367.2 135.6 367.0 140.3C366.9 142.3 366.7 145.9 366.6 148.2C366.4 150.6 366.3 154.2 366.2 156.2C366.1 158.1 365.9 161.9 365.7 164.5C365.5 169.0 365.5 170.1 365.9 172.0C366.4 174.6 367.8 175.6 370.4 175.2C374.2 174.7 375.7 171.9 376.0 164.8C376.1 162.9 376.3 159.5 376.4 157.3C376.6 155.2 376.8 151.7 376.8 149.7C377.0 145.1 377.1 143.1 377.3 140.7C377.4 139.6 377.6 136.8 377.7 134.4C377.8 132.0 377.9 128.8 378.0 127.3C378.1 125.8 378.2 123.0 378.3 121.1C378.6 116.5 378.4 116.7 382.6 116.1C383.6 115.9 385.2 115.7 386.2 115.5C396.5 113.7 395.9 113.6 395.7 117.4C395.6 118.6 395.3 123.2 395.1 127.7C394.5 139.8 394.3 142.2 394.2 145.2C394.1 146.7 393.9 150.2 393.7 153.1C393.5 157.9 393.1 163.2 392.9 164.5C390.5 178.9 384.2 184.9 368.8 187.4C367.1 187.7 361.6 187.9 360.7 187.7ZM320.1 183.2C323.0 181.7 324.3 177.6 324.8 168.7C324.9 167.3 325.1 164.5 325.2 162.3C326.6 141.0 325.7 135.9 320.8 136.8C317.3 137.5 315.4 140.7 314.8 146.9C314.7 147.9 314.6 148.9 314.6 149.0C314.5 149.4 314.2 153.1 314.0 156.3C313.9 157.9 313.7 161.4 313.6 164.0C312.8 177.1 313.5 182.1 316.1 183.6C316.7 184.0 319.0 183.8 320.1 183.2ZM399.9 181.1C399.5 180.7 399.5 178.7 400.0 170.6C400.1 169.1 400.3 165.6 400.4 162.8C400.5 159.9 400.7 156.0 400.8 154.2C400.9 152.3 401.1 149.1 401.2 147.1C401.3 145.1 401.4 142.1 401.5 140.4C401.6 138.8 401.7 135.8 401.8 133.8C402.7 115.2 402.8 113.6 403.6 113.3C403.9 113.1 409.7 112.1 412.3 111.8C413.2 111.6 414.6 111.4 415.3 111.3C418.4 110.7 420.5 110.3 421.3 110.3C421.8 110.2 423.1 110.0 424.1 109.8C425.1 109.7 426.7 109.4 427.8 109.3C428.8 109.1 430.4 108.8 431.4 108.7C434.7 108.1 440.6 107.2 441.0 107.2C442.0 107.2 442.0 107.5 441.8 111.4C441.7 113.3 441.6 116.2 441.5 117.8C441.3 121.6 441.4 121.5 438.2 122.0C437.0 122.2 434.4 122.6 432.4 122.9C430.4 123.2 427.8 123.7 426.5 123.8C425.3 124.0 424.0 124.2 423.6 124.3C423.2 124.4 422.5 124.5 421.9 124.6C419.2 124.9 419.3 124.4 418.9 133.4C418.8 137.0 418.4 136.9 424.3 135.9C434.5 134.2 437.9 133.7 438.5 133.7C439.5 133.8 439.6 134.0 439.2 139.3C439.0 141.8 438.8 144.4 438.8 145.1C438.8 147.1 438.4 147.5 435.3 147.9C434.3 148.1 432.6 148.3 431.7 148.5C430.7 148.7 428.9 149.0 427.6 149.2C426.3 149.4 424.4 149.7 423.4 149.8C422.4 150.0 421.1 150.2 420.6 150.3C418.2 150.5 418.1 150.7 417.9 154.8C417.3 164.0 417.3 164.4 418.8 164.1C421.3 163.6 426.1 162.9 430.8 162.2C432.8 161.9 434.9 161.5 435.6 161.4C440.6 160.4 440.4 160.0 439.9 167.6C439.8 169.6 439.7 171.9 439.7 172.6C439.7 175.2 439.7 175.2 433.8 176.1C431.3 176.5 428.8 176.9 428.3 177.0C427.8 177.1 426.9 177.2 426.2 177.3C425.5 177.4 424.2 177.6 423.4 177.7C422.6 177.9 421.0 178.1 419.9 178.3C418.8 178.5 417.2 178.8 416.3 178.9C415.5 179.1 414.1 179.3 413.2 179.4C407.9 180.2 404.4 180.8 401.7 181.3C400.5 181.6 400.4 181.6 399.9 181.1ZM163.0 181.0C167.1 180.4 169.6 177.7 170.3 173.3C171.3 166.1 169.1 163.4 163.1 164.3C160.8 164.6 161.0 164.2 160.6 171.6C160.4 174.3 160.3 177.4 160.2 178.5C160.1 181.3 160.2 181.4 163.0 181.0ZM265.5 163.9C270.8 163.0 273.4 159.9 273.8 154.2C274.1 148.9 271.9 147.0 266.5 147.7C263.3 148.2 263.4 148.0 263.2 153.4C262.6 165.1 262.4 164.4 265.5 163.9ZM143.6 144.5C143.2 144.1 143.2 143.2 143.5 138.6C143.6 137.0 143.7 134.1 143.8 132.2C144.2 124.9 144.4 122.2 144.8 118.2C145.1 115.9 145.4 113.5 145.4 112.8C145.5 112.1 145.6 111.2 145.7 110.8C145.8 110.3 146.0 108.6 146.2 106.9C146.3 105.3 146.6 103.2 146.7 102.4C146.8 101.6 147.0 100.0 147.1 98.8C147.4 96.5 147.7 95.9 148.9 95.8C150.7 95.5 155.5 94.8 157.1 94.5C158.5 94.2 159.0 94.2 159.3 94.3C159.9 94.6 160.0 95.2 160.1 103.3C160.2 106.9 160.3 112.0 160.3 114.5C160.4 119.0 160.4 121.6 160.0 128.6C159.9 130.5 159.7 134.1 159.6 136.7C159.3 142.5 159.6 142.1 156.2 142.7C155.0 142.9 153.1 143.2 151.8 143.4C150.6 143.6 149.2 143.9 148.7 143.9C148.2 144.0 147.0 144.2 146.2 144.4C144.3 144.9 144.0 144.9 143.6 144.5ZM181.4 122.6C172.4 121.2 169.8 111.9 171.7 86.9C173.3 64.4 179.4 54.8 194.2 51.2C209.5 47.5 217.7 53.1 217.7 67.4C217.7 69.7 217.5 70.1 216.1 70.2C215.6 70.3 214.4 70.5 213.4 70.7C212.4 70.8 210.9 71.1 210.0 71.2C209.1 71.4 207.1 71.7 205.5 72.0C200.8 72.8 201.1 73.0 201.0 69.2C200.8 63.4 199.2 61.6 195.3 62.9C192.3 63.9 190.6 67.7 190.0 75.1C189.9 76.4 189.7 78.3 189.7 79.3C188.9 87.9 188.6 101.4 189.1 104.5C189.7 108.5 190.9 109.9 193.6 109.6C197.5 109.2 199.8 104.7 200.3 97.0C200.4 94.4 200.3 94.3 197.9 94.8C194.2 95.4 194.4 95.6 194.6 91.0C194.8 85.1 194.9 83.9 195.3 83.5C195.7 83.1 197.2 82.8 206.0 81.4C206.9 81.3 209.4 80.9 211.7 80.5C217.7 79.5 217.3 79.3 217.0 83.4C216.8 86.2 216.6 89.8 216.1 100.9C215.6 110.4 215.3 115.4 215.1 116.0C214.9 116.9 215.0 116.8 206.8 118.2C203.8 118.6 203.7 118.5 203.7 115.8C203.7 113.6 203.1 113.4 201.7 115.5C198.4 120.3 188.7 123.7 181.4 122.6ZM217.3 116.3C217.2 116.0 217.3 115.6 217.4 115.0C217.5 114.5 218.1 112.5 218.6 110.6C219.1 108.7 219.7 106.5 219.9 105.8C220.2 104.6 220.8 102.6 221.3 100.7C221.5 100.1 222.0 98.1 222.5 96.3C223.5 92.6 225.1 86.9 225.5 85.4C225.8 84.3 226.4 82.3 227.1 79.8C227.3 78.8 227.8 77.3 228.0 76.4C228.2 75.5 228.7 73.9 229.0 72.8C229.4 71.0 230.3 68.0 231.3 64.7C231.6 63.3 233.1 57.9 233.9 54.9C234.2 54.1 234.5 52.8 234.7 52.0C235.0 51.2 235.4 49.7 235.7 48.7C236.3 46.4 236.6 46.1 237.7 45.8C238.7 45.6 242.3 45.1 243.3 44.9C243.7 44.9 244.8 44.7 245.8 44.5C246.7 44.3 249.6 43.8 252.4 43.4C258.6 42.4 258.1 42.1 258.8 46.3C259.2 48.4 259.5 50.1 260.7 56.2C261.1 58.2 261.6 60.8 261.8 61.9C262.0 63.0 262.3 64.4 262.4 65.1C262.5 65.7 262.8 67.3 263.1 68.6C263.6 71.3 264.2 74.5 265.2 79.2C265.4 80.2 265.6 81.5 265.8 82.2C266.0 83.7 266.9 88.2 267.3 90.2C267.4 90.9 267.7 92.7 268.0 94.2C268.6 97.4 269.1 99.9 269.5 101.8C269.7 102.6 269.9 103.8 270.0 104.4C270.1 105.1 270.3 106.0 270.4 106.5C270.9 108.0 270.3 108.4 266.8 108.9C263.7 109.3 257.6 110.3 256.0 110.7C252.4 111.4 252.4 111.4 252.1 107.5C251.9 105.9 251.8 104.0 251.7 103.4C251.6 102.7 251.5 101.9 251.5 101.5C251.5 99.6 251.1 99.5 246.8 100.2C244.9 100.5 242.7 100.9 241.9 101.0C238.6 101.4 237.5 101.9 237.3 102.9C237.1 103.7 235.7 111.1 235.6 111.8C235.3 113.9 235.1 114.0 230.1 114.8C228.0 115.1 224.6 115.6 222.6 116.0C218.2 116.8 217.6 116.8 217.3 116.3ZM274.8 107.3C274.1 106.9 274.0 105.9 274.4 100.1C274.5 98.2 274.7 94.8 274.8 92.7C274.9 90.5 275.2 86.0 275.3 82.7C275.5 79.3 275.8 74.3 275.9 71.6C276.5 58.7 276.7 56.2 276.8 53.9C276.9 52.5 277.0 50.2 277.1 48.7C277.2 44.1 277.5 40.3 277.7 39.8C278.0 39.1 277.9 39.1 284.4 38.1C288.1 37.5 291.4 37.0 293.6 36.6C297.1 35.9 296.8 35.6 298.2 42.1C298.7 44.6 299.3 47.5 299.9 50.1C300.1 51.0 300.6 53.1 301.0 54.8C301.3 56.5 302.1 59.8 302.6 62.2C303.1 64.5 303.7 67.3 303.9 68.3C304.4 70.6 305.1 73.2 305.3 73.6C306.0 74.9 306.5 72.7 306.5 68.8C306.5 66.9 306.6 64.1 307.4 48.9C307.6 44.6 307.9 39.8 307.9 38.3C308.1 33.8 306.8 34.5 318.2 32.7C318.8 32.6 319.8 32.4 320.6 32.3C324.6 31.6 324.5 31.2 323.9 39.4C323.6 44.2 323.1 54.6 322.7 63.7C322.6 65.7 322.4 68.5 322.3 69.8C322.2 71.0 322.1 73.8 322.0 75.9C321.8 80.2 321.8 81.2 321.4 87.6C321.3 90.1 321.1 93.7 321.0 95.6C320.8 100.3 321.0 100.0 317.3 100.6C311.5 101.5 310.5 101.7 307.8 102.1C306.3 102.3 304.6 102.6 304.0 102.8C302.0 103.2 301.9 103.0 301.1 99.5C300.4 96.4 299.6 93.3 299.0 90.5C298.7 89.4 298.3 87.5 298.1 86.4C297.8 85.4 297.6 84.4 297.6 84.3C297.5 84.2 297.3 83.2 297.0 82.0C296.5 79.7 295.8 76.7 294.8 71.9C294.4 70.5 294.0 68.5 293.8 67.6C292.9 63.4 292.2 64.1 292.0 69.5C291.9 71.5 291.7 74.9 291.6 77.2C291.4 79.4 291.3 82.2 291.3 83.3C291.2 85.4 290.9 90.4 290.8 92.9C290.7 93.6 290.6 96.0 290.5 98.2C290.2 105.0 290.2 105.0 288.5 105.2C287.2 105.4 275.6 107.3 275.3 107.4C275.2 107.5 274.9 107.4 274.8 107.3ZM324.3 99.3C324.0 99.0 324.0 99.0 324.2 98.0C325.1 94.7 326.2 90.4 327.1 87.5C328.0 84.1 329.6 78.5 329.9 77.1C330.4 75.1 331.3 71.9 331.6 71.1C331.7 70.7 332.1 69.4 332.4 68.2C332.8 66.9 333.1 65.6 333.3 65.2C333.4 64.8 333.9 63.0 334.3 61.2C334.8 59.4 335.4 57.2 335.7 56.2C336.8 52.5 337.7 49.0 338.7 45.6C339.2 43.6 339.9 40.9 340.3 39.8C340.6 38.6 341.0 37.1 341.2 36.4C341.3 35.8 341.7 34.4 342.0 33.2C342.4 32.1 342.7 30.9 342.8 30.5C343.1 29.6 343.7 28.9 344.3 28.8C344.5 28.7 345.9 28.5 347.4 28.3C348.9 28.0 351.0 27.7 352.1 27.5C353.2 27.3 354.3 27.1 354.7 27.1C355.0 27.0 356.0 26.8 357.0 26.7C365.2 25.1 364.9 25.1 365.6 28.7C366.8 35.0 367.1 36.4 367.4 38.2C367.6 39.4 368.1 41.7 368.4 43.5C369.2 47.8 370.1 52.6 370.4 54.2C370.6 54.9 370.8 56.1 371.0 57.0C371.5 59.8 372.0 62.2 372.3 63.3C372.4 63.9 372.8 66.3 373.2 68.6C373.7 70.9 374.1 73.3 374.2 73.9C374.4 74.6 374.6 75.9 374.8 77.0C375.7 81.7 376.3 84.9 377.2 88.7C377.7 91.4 378.1 91.2 370.0 92.3C367.8 92.7 364.7 93.2 362.6 93.6C359.2 94.3 359.2 94.3 358.9 90.3C358.2 82.0 358.4 82.3 354.9 82.9C352.5 83.3 349.4 83.8 348.2 84.0C345.2 84.4 344.3 84.8 344.1 86.0C344.0 86.6 343.4 89.4 342.7 93.3C341.9 97.1 342.2 96.9 336.9 97.7C335.1 98.0 332.8 98.3 331.9 98.5C329.7 98.9 326.1 99.5 325.2 99.6C324.7 99.7 324.5 99.6 324.3 99.3ZM146.4 90.9C146.1 90.4 146.1 90.0 146.5 83.6C146.6 82.1 146.7 80.1 146.8 79.0C146.8 77.8 146.9 77.0 147.1 76.7C147.4 76.3 147.4 76.3 155.3 75.0C156.5 74.8 158.2 74.6 159.1 74.4C162.8 73.8 162.5 73.1 161.9 82.8C161.8 84.9 161.6 87.0 161.6 87.5C161.5 89.0 161.5 89.1 156.0 89.9C153.9 90.2 151.5 90.6 150.5 90.8C147.4 91.4 146.8 91.5 146.4 90.9ZM390.9 89.0C383.0 88.3 379.4 84.0 379.1 74.9C378.9 70.5 378.9 70.5 382.7 69.9C384.1 69.7 385.7 69.4 386.3 69.3C386.9 69.2 388.2 69.1 389.1 68.9C390.0 68.8 391.7 68.5 392.8 68.3C395.8 67.8 395.8 67.8 395.9 71.1C396.1 75.4 398.1 77.2 401.6 76.3C406.7 74.9 408.8 67.6 405.1 64.0C403.6 62.6 401.7 61.7 396.6 60.3C384.0 56.9 380.2 51.8 381.7 40.2C383.0 29.1 388.5 22.2 398.4 18.9C400.5 18.2 401.5 18.0 404.4 17.4C417.4 15.0 424.1 19.6 424.5 31.1C424.6 35.1 424.7 35.0 421.4 35.5C415.2 36.5 412.5 37.0 410.9 37.3C408.8 37.7 408.7 37.7 408.6 35.0C408.3 28.8 403.3 27.3 399.7 32.2C395.8 37.5 399.4 42.9 408.2 44.7C413.4 45.8 418.3 48.0 420.8 50.5C427.3 56.8 425.8 72.7 417.9 80.7C412.6 86.1 400.6 89.8 390.9 89.0ZM245.3 87.2C250.3 86.4 250.0 87.2 249.1 79.3C248.9 77.5 248.6 74.9 247.9 68.9C247.8 67.8 247.6 65.7 247.4 64.2C246.9 58.9 246.2 58.9 245.2 64.0C244.6 67.1 243.7 71.4 243.0 74.6C242.7 75.9 242.4 77.5 242.2 78.2C242.1 78.9 241.8 80.0 241.7 80.8C239.9 88.5 239.7 88.2 245.3 87.2ZM350.4 70.4C357.3 69.3 356.8 69.8 356.2 64.9C356.0 63.1 355.7 60.3 355.6 58.8C355.4 57.3 355.3 56.0 355.2 55.9C355.2 55.7 355.1 54.8 355.0 53.7C354.8 52.0 354.5 49.2 354.0 44.9C353.8 43.3 353.5 42.9 353.0 43.4C352.7 43.7 352.4 45.0 351.5 49.5C350.9 52.7 350.0 56.8 349.6 58.8C346.6 72.2 346.6 71.0 350.4 70.4Z"></path></defs><use href="#gp" fill="#021155" fill-opacity=".55" transform="translate(5.5 6.5)"></use><use href="#gp" fill="#021155" transform="translate(3 4)"></use><use href="#gp" fill="#fff"></use></svg></h2>
+<div class="close-r">
+<p>Tu tiendita, tu fonda o tu puesto de comida, con todo lo que vende en una sola visita.</p>
+<a href="#sucursales" class="btn btn-w" style="align-self:flex-start;min-height:58px;padding:0 34px">Encuentra tu sucursal
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"></path></svg></a>
+</div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+<div class="foot-in">
+<div class="foot-top">
+<div class="foot-l">
+<img src="img/logo-abarrotera-footer.svg" alt="Abarrotera Sánchez">
+<p>El mayoreo de Sánchez para tiendas, fondas y negocios de comida. Sin membresía y sin mínimo de compra.</p>
+<a href="tel:+529931035180" style="color:#fff;font-weight:800;font-size:18px">993 103 5180</a>
+<a href="mailto:Clientes@sanchezgrupo.com" style="color:rgba(255,255,255,.8);font-size:15px">Clientes@sanchezgrupo.com</a>
+<div class="socials">
+<a href="https://www.facebook.com/AbarroteraSanchez" target="_blank" rel="noopener">Facebook</a>
+<a href="https://tiktok.com/@abarroterasanchez" target="_blank" rel="noopener">TikTok</a>
+</div>
+</div>
+<div class="foot-r">
+<div><b>TABASCO</b><span>Central de Abastos<br>Cd. Industrial<br>Cárdenas<br>Cárdenas 2<br>Comalcalco<br>Huimanguillo<br>Macuspana<br>Emiliano Zapata<br>Tenosique</span></div>
+<div><b>CHIAPAS</b><span>Palenque 1<br>Palenque 2<br>Ocosingo</span></div>
+<div><b>VERACRUZ</b><span>Minatitlán</span></div>
+<div><b>CAMPECHE</b><span>Ciudad del Carmen</span></div>
+</div>
+</div>
+<div class="grupo">
+<div class="grupo-t"><b>Parte de Grupo Sánchez</b></div>
+<div class="grupo-btns">
+<a class="btn btn-w" href="https://sanchezgrupo.com/" target="_blank" rel="noopener">Grupo Sánchez</a>
+<a class="btn btn-o" href="https://supersanchez.com/" target="_blank" rel="noopener">Súper Sánchez</a>
+</div>
+<div class="legal">
+<a href="https://nosotros.supersanchez.com/avisode-privacidad" target="_blank" rel="noopener">Aviso de privacidad</a>
+<a href="https://nosotros.supersanchez.com/t%C3%A9rminos-y-condiciones-de-usot%C3%A9rminos-y-condiciones-de-uso" target="_blank" rel="noopener">Términos y condiciones</a>
+</div>
+</div>
+<div class="foot-bot">
+<span>Copyright © 2026, Corporación Sánchez.</span>
+<a class="hecho" href="https://www.instagram.com/ingeniosomx/" target="_blank" rel="noopener" aria-label="Hecho por Ingenioso, en Instagram">© Hecho por <svg class="hecho-logo" viewBox="0 0 183.53 36.97" fill="#ffffff" role="img" aria-label="Ingenioso"><path d="M57.11,9.31l-2.35,16.74c-1.05,7.48-5.57,10.92-12.82,10.92-3.81,0-7.38-.93-9.48-2.76l2.91-4.18c1.52,1.38,4.2,2.28,6.78,2.28,4.11,0,6.17-1.87,6.67-5.49l.12-.86c-1.77,1.68-4.09,2.5-6.7,2.5-5.57,0-9.51-3.85-8.69-9.72.82-5.87,5.85-9.72,11.42-9.72,2.8,0,4.99.94,6.25,2.88l.36-2.58h5.53ZM50.03,18.73c.42-2.95-1.51-4.93-4.58-4.93s-5.58,1.98-6,4.93c-.42,2.95,1.55,4.93,4.61,4.93s5.55-1.98,5.96-4.93"></path><path d="M79.09,21.11h-15.21c.21,2.5,2.12,4.03,5.19,4.03,2.13,0,3.75-.63,5.32-1.94l2.63,3.36c-2.17,2.13-5.13,3.25-8.75,3.25-6.95,0-10.86-4.37-10.02-10.35.85-6.02,6.05-10.36,12.18-10.36s9.9,3.97,8.99,10.43c-.06.44-.23,1.08-.33,1.57M64.29,17.71h9.9c-.05-2.54-1.73-4.19-4.34-4.19s-4.78,1.61-5.56,4.19"></path><path d="M94.62,9.11c-2.72,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.08,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"></path><path d="M24.19,9.11c-2.73,0-5.21.93-7.03,2.65l.33-2.35h-5.57l-2.83,20.11h5.83l1.4-9.94c.52-3.7,2.78-5.42,5.58-5.42,2.58,0,3.86,1.49,3.4,4.75l-1.49,10.61h3.67s.09,0,.13,0c1.14-.05,2.08-.88,2.3-1.97.02-.09.03-.18.04-.27l1.3-9.27c.86-6.13-2.34-8.9-7.08-8.9"></path><path d="M111.98,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36c-.85,6.06-6.09,10.35-12.48,10.35s-10.46-4.3-9.61-10.35M128.16,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"></path><path d="M133.71,27.64l2.53-4.19c1.63,1.16,4.25,1.94,6.71,1.94,2.69,0,3.8-.71,3.96-1.83.46-3.29-12.16.08-11.03-7.96.54-3.81,4.35-6.51,10.22-6.51,2.76,0,5.74.64,7.49,1.76l-2.53,4.15c-1.82-1.12-3.75-1.49-5.58-1.49-2.61,0-3.85.83-4,1.87-.48,3.44,12.13.12,11.02,8.04-.52,3.74-4.38,6.39-10.39,6.39-3.4,0-6.7-.93-8.4-2.17"></path><path d="M154.39,19.46c.85-6.06,6.13-10.36,12.51-10.36s10.42,4.3,9.57,10.36-6.09,10.35-12.48,10.35-10.46-4.3-9.6-10.35M170.57,19.46c.49-3.48-1.42-5.57-4.34-5.57s-5.45,2.09-5.94,5.57c-.49,3.48,1.46,5.57,4.38,5.57s5.41-2.09,5.9-5.57"></path><path d="M2.53,29.42h0c-1.61,0-2.73-1.31-2.51-2.91l2.01-14.28c.23-1.61,1.71-2.92,3.32-2.92h2.91l-2.42,17.2c-.23,1.61-1.72,2.91-3.32,2.91"></path><path d="M9.47,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S4.42,0,6.22,0s3.25,1.46,3.25,3.25"></path><path d="M105.89,29.42h0c-1.61,0-2.73-1.31-2.5-2.91l2.01-14.28c.23-1.61,1.72-2.91,3.32-2.91h2.92l-2.42,17.2c-.23,1.61-1.71,2.91-3.32,2.91"></path><path d="M112.83,3.25c0,1.8-1.46,3.25-3.25,3.25s-3.25-1.46-3.25-3.25S107.78,0,109.58,0s3.25,1.46,3.25,3.25"></path><path d="M178.94,7.33c-.17-.09-.43-.17-.78-.26s-.57-.16-.66-.24c-.07-.06-.11-.13-.11-.22,0-.09.04-.17.11-.22.12-.09.28-.13.49-.13s.36.04.46.12c.1.08.17.21.2.4l.72-.03c-.01-.33-.13-.59-.36-.79-.23-.2-.56-.3-1.01-.3-.27,0-.51.04-.71.12-.19.08-.34.2-.44.36-.1.16-.15.33-.15.51,0,.28.11.52.33.72.16.14.43.26.81.35.3.08.5.13.58.16.12.04.21.1.26.16.05.06.07.13.07.22,0,.13-.06.25-.18.34-.12.1-.29.15-.53.15-.22,0-.39-.06-.52-.17-.13-.11-.22-.28-.26-.52l-.7.07c.05.4.19.7.43.91.24.21.59.31,1.04.31.31,0,.57-.04.78-.13.21-.09.37-.22.48-.4.11-.18.17-.37.17-.58,0-.23-.05-.41-.14-.57-.1-.15-.23-.28-.4-.36"></path><polygon points="182.44 5.73 181.8 8.17 181.15 5.73 180.07 5.73 180.07 9.31 180.74 9.31 180.74 6.49 181.45 9.31 182.15 9.31 182.86 6.49 182.86 9.31 183.53 9.31 183.53 5.73 182.44 5.73"></polygon></svg></a>
+</div>
+</div>
+</footer>
+
+<!-- AVISO DE PEDIDO -->
+<div class="toast" id="toast" role="status" aria-live="polite" hidden>
+<img id="toastImg" src="img/suc-central-de-abastos.jpg" alt="">
+<div class="toast-b">
+<span class="ago" id="toastLabel"></span>
+<span id="toastBody" style="font-size:14px;line-height:1.4"></span>
+</div>
+<button type="button" class="toast-x" id="toastClose" aria-label="Cerrar aviso">
+<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+</button>
+</div>
+
+
+<script>
+(function () {
+  var TARGET = Date.parse('2026-10-29T09:00:00-06:00');
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var pad = function (n) { return String(n).padStart(2, '0'); };
+
+  // Cuenta regresiva de la Expo. Al llegar a cero se ocultan los elementos de la Expo.
+  function tickCountdown() {
+    var diff = Math.max(0, TARGET - Date.now());
+    var v = {
+      dias: Math.floor(diff / 86400000),
+      horas: Math.floor((diff % 86400000) / 3600000),
+      min: Math.floor((diff % 3600000) / 60000),
+      seg: Math.floor((diff % 60000) / 1000)
+    };
+    document.querySelectorAll('[data-cd]').forEach(function (el) {
+      el.textContent = pad(v[el.getAttribute('data-cd')]);
+    });
+    if (diff <= 0) {
+      document.querySelectorAll('[data-expo]').forEach(function (el) { el.hidden = true; });
+    }
+  }
+  tickCountdown();
+  setInterval(tickCountdown, 1000);
+
+  // Menú móvil
+  var menuBtn = document.getElementById('menuBtn');
+  var menu = document.getElementById('mobileMenu');
+  if (menuBtn && menu) {
+    menuBtn.addEventListener('click', function () {
+      var abrir = menu.hidden;
+      menu.hidden = !abrir;
+      menuBtn.setAttribute('aria-expanded', String(abrir));
+    });
+    menu.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () {
+        menu.hidden = true;
+        menuBtn.setAttribute('aria-expanded', 'false');
+      });
+    });
+  }
+
+  // Filtro de sucursales por estado
+  var filtros = document.querySelectorAll('.filt[data-filter]');
+  var tarjetas = document.querySelectorAll('.suc[data-estado]');
+  filtros.forEach(function (b) {
+    b.addEventListener('click', function () {
+      var f = b.getAttribute('data-filter');
+      filtros.forEach(function (x) {
+        var on = x === b;
+        x.setAttribute('aria-pressed', String(on));
+        x.style.background = on ? '#FFFFFF' : 'transparent';
+        x.style.color = on ? '#021155' : '#FFFFFF';
+      });
+      tarjetas.forEach(function (c) {
+        c.hidden = !(f === 'Todas' || c.getAttribute('data-estado') === f);
+      });
+    });
+  });
+
+  // Preguntas frecuentes (una abierta a la vez)
+  var qas = document.querySelectorAll('.qa');
+  qas.forEach(function (qa, idx) {
+    var btn = qa.querySelector('button[data-faq]');
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      var estabaAbierta = btn.getAttribute('aria-expanded') === 'true';
+      qas.forEach(function (otro, j) {
+        var b = otro.querySelector('button[data-faq]');
+        var p = otro.querySelector('p');
+        var ic = b.querySelector('.qa-ic');
+        var on = j === idx && !estabaAbierta;
+        b.setAttribute('aria-expanded', String(on));
+        if (p) p.hidden = !on;
+        if (ic) {
+          ic.textContent = on ? '−' : '+';
+          ic.style.background = on ? '#021155' : '#0442CF';
+        }
+      });
+    });
+  });
+
+  // Aviso de pedido (cada 14 s, visible 6 s)
+  var SUC = [{"nombre": "Central de Abastos", "ciudad": "Villahermosa", "img": "img/suc-central-de-abastos.jpg"}, {"nombre": "Cd. Industrial", "ciudad": "Villahermosa", "img": "img/suc-cd-industrial.jpg"}, {"nombre": "Cárdenas", "ciudad": "Cárdenas", "img": "img/suc-cardenas.jpg"}, {"nombre": "Cárdenas 2", "ciudad": "Cárdenas", "img": "img/suc-cardenas-2.jpg"}, {"nombre": "Comalcalco", "ciudad": "Comalcalco", "img": "img/suc-comalcalco.jpg"}, {"nombre": "Huimanguillo", "ciudad": "Huimanguillo", "img": "img/suc-huimanguillo.jpg"}, {"nombre": "Macuspana", "ciudad": "Macuspana", "img": "img/suc-macuspana.jpg"}, {"nombre": "Emiliano Zapata", "ciudad": "Emiliano Zapata", "img": "img/suc-emiliano-zapata.jpg"}, {"nombre": "Tenosique", "ciudad": "Tenosique", "img": "img/suc-tenosique.jpg"}, {"nombre": "Palenque 1", "ciudad": "Palenque", "img": "img/suc-palenque-1.jpg"}, {"nombre": "Palenque 2", "ciudad": "Palenque", "img": "img/suc-palenque-2.jpg"}, {"nombre": "Ocosingo", "ciudad": "Ocosingo", "img": "img/suc-ocosingo.jpg"}, {"nombre": "Minatitlán", "ciudad": "Minatitlán", "img": "img/suc-minatitlan.jpg"}, {"nombre": "Ciudad del Carmen", "ciudad": "Ciudad del Carmen", "img": "img/suc-ciudad-del-carmen.jpg"}];
+  var toast = document.getElementById('toast');
+  var tImg = document.getElementById('toastImg');
+  var tLabel = document.getElementById('toastLabel');
+  var tBody = document.getElementById('toastBody');
+  var tClose = document.getElementById('toastClose');
+  var toastCerrado = false, tHide = null, tNext = null;
+
+  function horarioMX() {
+    var parts = new Intl.DateTimeFormat('en-US', { timeZone: 'America/Mexico_City', weekday: 'short', hour: 'numeric', minute: 'numeric', hour12: false }).formatToParts(new Date());
+    var g = function (k) { var p = parts.find(function (x) { return x.type === k; }); return p ? p.value : ''; };
+    return {
+      dia: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].indexOf(g('weekday')),
+      minutos: (parseInt(g('hour'), 10) % 24) * 60 + parseInt(g('minute'), 10)
+    };
+  }
+
+  function estadoSucursal() {
+    var abre = 8, cierra = 18, dias = [1, 2, 3, 4, 5, 6];
+    var h = horarioMX();
+    var abierto = dias.indexOf(h.dia) >= 0 && h.minutos >= abre * 60 && h.minutos < cierra * 60;
+    var h12 = function (x) { return (x % 12 || 12) + (x < 12 ? ' a. m.' : ' p. m.'); };
+    if (abierto) return { abierto: true, txt: ' está abierta hoy hasta las ' + h12(cierra) };
+    var nombres = ['el domingo', 'el lunes', 'el martes', 'el miércoles', 'el jueves', 'el viernes', 'el sábado'];
+    for (var k = 0; k <= 7; k++) {
+      var d = (h.dia + k) % 7;
+      if (dias.indexOf(d) < 0) continue;
+      if (k === 0 && h.minutos >= abre * 60) continue;
+      var cuando = k === 0 ? 'hoy' : k === 1 ? 'mañana' : nombres[d];
+      return { abierto: false, txt: ' abre ' + cuando + ' a las ' + h12(abre) };
+    }
+    return { abierto: false, txt: '.' };
+  }
+
+  function mostrarToast() {
+    if (toastCerrado || !toast || !SUC.length) return;
+    var t = SUC[Math.floor(Math.random() * SUC.length)];
+    var v = Math.floor(Math.random() * 3);
+    var label, a, b, c, d;
+    if (v === 0) {
+      label = 'Sucursal ' + t.nombre; a = 'Tienditas, fondas y puestos de ' + t.ciudad; b = ' ya surten en '; c = 'Suc. ' + t.nombre; d = '.';
+    } else if (v === 1) {
+      var e = estadoSucursal();
+      label = e.abierto ? 'Abierta ahora' : 'Horario'; a = ''; b = ''; c = 'Suc. ' + t.nombre; d = e.txt;
+    } else {
+      label = 'Sucursal ' + t.nombre; a = ''; b = 'En '; c = 'Suc. ' + t.nombre; d = ' compras por caja, bulto o pieza, sin membresía.';
+    }
+    tImg.src = t.img;
+    tLabel.textContent = label;
+    tBody.textContent = '';
+    [[a, true], [b, false], [c, true], [d, false]].forEach(function (p) {
+      if (p[1]) {
+        var bb = document.createElement('b');
+        bb.textContent = p[0];
+        tBody.appendChild(bb);
+      } else {
+        tBody.appendChild(document.createTextNode(p[0]));
+      }
+    });
+    toast.hidden = false;
+    clearTimeout(tHide);
+    tHide = setTimeout(function () { toast.hidden = true; }, 6000);
+    clearTimeout(tNext);
+    tNext = setTimeout(mostrarToast, 14000);
+  }
+
+  if (tClose) {
+    tClose.addEventListener('click', function () {
+      toastCerrado = true;
+      clearTimeout(tHide);
+      clearTimeout(tNext);
+      toast.hidden = true;
+    });
+  }
+  if (toast) tNext = setTimeout(mostrarToast, 4000);
+
+  // Luz suave que sigue al cursor
+  var spot = document.getElementById('spot');
+  if (spot && !reduce) {
+    var cx = 0, cy = 0, tx = 0, ty = 0, raf = null;
+    var paso = function () {
+      cx += (tx - cx) * 0.16;
+      cy += (ty - cy) * 0.16;
+      spot.style.setProperty('--sx', cx + 'px');
+      spot.style.setProperty('--sy', cy + 'px');
+      raf = (Math.abs(tx - cx) > 0.5 || Math.abs(ty - cy) > 0.5) ? requestAnimationFrame(paso) : null;
+    };
+    var alMover = function (e) {
+      tx = e.clientX; ty = e.clientY;
+      spot.style.opacity = '1';
+      if (!raf) raf = requestAnimationFrame(paso);
+    };
+    var alSoltar = function () { spot.style.opacity = '0'; };
+    window.addEventListener('pointermove', alMover, { passive: true });
+    window.addEventListener('pointerdown', alMover, { passive: true });
+    window.addEventListener('pointerup', alSoltar, { passive: true });
+    document.addEventListener('pointerleave', alSoltar);
+  }
+
+  // Aparición suave al entrar en pantalla
+  var revelar = document.querySelectorAll('.step, .suc, .pcard, .qa, .tcard, .benef-in, .head');
+  if ('IntersectionObserver' in window && revelar.length) {
+    revelar.forEach(function (e) { e.classList.add('rv', 'rv-pre'); });
+    var io = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        if (x.isIntersecting) {
+          x.target.classList.add('rv-in');
+          io.unobserve(x.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revelar.forEach(function (e) { io.observe(e); });
+    setTimeout(function () { revelar.forEach(function (e) { e.classList.add('rv-in'); }); }, 6000);
+  }
+
+  // Línea de tiempo de Cómo se compra: se repite mientras está en pantalla
+  var tls = document.querySelectorAll('.tl');
+  if ('IntersectionObserver' in window && tls.length) {
+    var tio = new IntersectionObserver(function (en) {
+      en.forEach(function (x) {
+        var el = x.target;
+        if (x.isIntersecting) {
+          if (!el.__loop) {
+            el.classList.add('in');
+            el.__loop = setInterval(function () {
+              el.classList.remove('in');
+              setTimeout(function () { el.classList.add('in'); }, 1000);
+            }, 10500);
+          }
+        } else if (el.__loop) {
+          clearInterval(el.__loop);
+          el.__loop = null;
+          el.classList.remove('in');
+        }
+      });
+    }, { threshold: [0, 0.12], rootMargin: '0px 0px -8% 0px' });
+    tls.forEach(function (e) { tio.observe(e); });
+  } else {
+    tls.forEach(function (e) { e.classList.add('in'); });
+  }
+})();
+</script>
+</body>
+</html>
